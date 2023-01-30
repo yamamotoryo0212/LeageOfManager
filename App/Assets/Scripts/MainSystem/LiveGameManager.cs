@@ -11,13 +11,17 @@ public class LiveGameManager : MonoBehaviour
     private RequestSummonerAPI _requestSummonerAPI = null;
     [SerializeField]
     private RequestSpectatorAPI _requestSpectatorAPI = null;
+    [SerializeField]
+    private RequestMatchIDAPI _requestMatchIDAPI = null;
+    [SerializeField]
+    private RequestMatchSummonerAPI _summonerDTO_MatchMember = null;
 
-    [Header("アカウントリクエストパラメータ")]
+    [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "toplane";
+    private string _gameName = "ピリ辛井";
     private string _requestAccountURL = null;
 
-    [Header("サモナーリクエストパラメータ")]
+    [Header("サモナーリクエスト")]
     private string _requestSummonerURL = null;
     public string RequestSummonerURL
     {
@@ -49,6 +53,28 @@ public class LiveGameManager : MonoBehaviour
         }
     }
 
+    [Header("マッチIDリクエスト")]
+    private string _requestMatchIDURL = null;
+    public string RequestMatchIDURL
+    {
+        get { return _requestMatchIDURL; }
+        set
+        {
+            if (value == null && value.Length <= 0)
+            {
+                Debug.LogError("_requestMatchURLに無効な値が入りました");
+                return;
+            }
+            _requestMatchIDURL = value;
+        }
+    }
+    private int _matchCount = 2;
+    public int MatchCount
+    {
+        get { return _matchCount; }
+    }
+
+
     [Header("リクエストチェック")]
     private bool _isAccountRequest = false;
     public bool IsAccountRequest
@@ -67,6 +93,24 @@ public class LiveGameManager : MonoBehaviour
     {
         get { return _isSpectatorRequest; }
         set { _isSpectatorRequest = value; }
+    }
+    private bool _isMatchIDRequest = false;
+    public bool IsMatchIDRequest
+    {
+        get { return _isMatchIDRequest; }
+        set { _isMatchIDRequest = value; }
+    }
+    private bool _isMatchSummonerRequest = false;
+    public bool IsMatchSummonerRequest
+    {
+        get { return _isMatchSummonerRequest; }
+        set { _isMatchSummonerRequest = value; }
+    }
+
+    private List<LiveGameMenberData> _liveGameMenberDatas = new List<LiveGameMenberData>();
+    public List<LiveGameMenberData> LiveGameMenberDatas
+    {
+        get { return _liveGameMenberDatas; }
     }
 
     private void Awake()
@@ -92,5 +136,22 @@ public class LiveGameManager : MonoBehaviour
             _isSpectatorRequest = true;
             StartCoroutine(_requestSpectatorAPI.GetRequest(_requestSpectatorURL));
         }
+
+        if (_isSpectatorRequest && !_isMatchSummonerRequest)
+        {
+
+        }
+
+        //if (_isSpectatorRequest && !_isMatchIDRequest)
+        //{
+        //    if (_requestMatchIDURL == null) return;
+        //    _isMatchIDRequest = true;
+        //    StartCoroutine(_requestMatchIDAPI.GetRequest(_requestMatchIDURL));
+        //}
+    }
+
+    public void SetMatchMenberPUUID(string pass)
+    {
+        StartCoroutine(_summonerDTO_MatchMember.GetRequest(pass));
     }
 }
