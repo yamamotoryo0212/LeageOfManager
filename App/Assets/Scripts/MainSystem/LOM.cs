@@ -5,9 +5,16 @@ using UnityEngine;
 public class LOM : SingletonMonoBehaviour<LOM>
 {
     [SerializeField]
-    private MainSystem _mainSystem = null;
-    public MainSystem Mainsystem
+    private RiotAPIData _mainSystem = null;
+    public RiotAPIData Mainsystem
     {
         get { return _mainSystem; }
+    }
+
+    [SerializeField]
+    private UserData _userData = null;
+    public UserData UserData
+    {
+        get { return _userData; }
     }
 }

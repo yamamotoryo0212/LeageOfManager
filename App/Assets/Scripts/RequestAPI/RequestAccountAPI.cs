@@ -40,6 +40,7 @@ public class RequestAccountAPI : MonoBehaviour
 
             AccountDto response = JsonUtility.FromJson<AccountDto>(webRequest.downloadHandler.text);
             Debug.Log(response.puuid);
+            LOM.Instance.UserData.SetPuuid(response.puuid);
             yield return null;
         }
     }
