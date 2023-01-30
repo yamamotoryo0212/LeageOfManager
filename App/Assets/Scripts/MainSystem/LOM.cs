@@ -5,8 +5,8 @@ using UnityEngine;
 public class LOM : SingletonMonoBehaviour<LOM>
 {
     [SerializeField]
-    private RiotAPIData _mainSystem = null;
-    public RiotAPIData Mainsystem
+    private DevelopmentData _mainSystem = null;
+    public DevelopmentData Mainsystem
     {
         get { return _mainSystem; }
     }
@@ -16,5 +16,12 @@ public class LOM : SingletonMonoBehaviour<LOM>
     public UserData UserData
     {
         get { return _userData; }
+    }
+
+    [SerializeField]
+    private LiveGameManager _liveGameManager = null;
+    public LiveGameManager LiveGameManager
+    {
+        get { return _liveGameManager; }
     }
 }

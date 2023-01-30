@@ -9,6 +9,11 @@ public class UserData : MonoBehaviour
     {
         get { return _puuid; }
     }
+    private string _summonerID = null;
+    public string SummonerID
+    {
+        get { return _summonerID; }
+    }
 
     public void SetPuuid(string puuid)
     {
@@ -18,5 +23,14 @@ public class UserData : MonoBehaviour
             return;
         }
         _puuid = puuid;
+    }
+    public void SetSummonerId(string summonerID)
+    {
+        if (summonerID == null && summonerID.Length <= 0)
+        {
+            Debug.LogError("summonerID‚É–³Œø‚È’l‚ª“ü‚è‚Ü‚µ‚½");
+            return;
+        }
+        _summonerID = summonerID;
     }
 }
