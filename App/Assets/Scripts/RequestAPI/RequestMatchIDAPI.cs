@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class RequestMatchIDAPI : MonoBehaviour
 {
-    public IEnumerator GetRequest(string uri)
+    public IEnumerator GetRequest(string uri,string puuid)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -30,6 +30,15 @@ public class RequestMatchIDAPI : MonoBehaviour
 
             string str = webRequest.downloadHandler.text.Replace("[", "{\"matchIDs\":[").Replace("]", "]}");
             MatchIDDTO response = JsonUtility.FromJson<MatchIDDTO>(str);
+
+            for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+            {
+                if (puuid == LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid)
+                {
+                    LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs = response.matchIDs;
+                    Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs[0] + "," + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs[1]);
+                }
+            }
             Debug.Log("ƒ}ƒbƒ`IDŽæ“¾Š®—¹");
           
             yield return null;

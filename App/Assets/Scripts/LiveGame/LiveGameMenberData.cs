@@ -8,4 +8,5 @@ public class LiveGameMenberData
     public string Puuid;
     public string SummonerName;
     public string SummonerID;
+    public List<string> MatchIDs;
 }

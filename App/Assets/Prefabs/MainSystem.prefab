@@ -359,7 +359,7 @@ MonoBehaviour:
   _requestSummonerAPI: {fileID: 705088839384646270}
   _requestSpectatorAPI: {fileID: 4882068015725770515}
   _requestMatchIDAPI: {fileID: 6759980462746510334}
-  _summonerDTO_MatchMember: {fileID: 9038617477641918793}
+  _requestMatchMemberAPI: {fileID: 9038617477641918793}
 --- !u!1 &8607697464005530696
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,13 +29,13 @@ public class RequestSpectatorAPI : MonoBehaviour
             }
 
             CurrentGameInfo response = JsonUtility.FromJson<CurrentGameInfo>(webRequest.downloadHandler.text);
-            Debug.Log(response.gameId);
+            //Debug.Log(response.gameId);
 
             //LOM.Instance.LiveGameManager.RequestMatchIDURL = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{LOM.Instance.UserData.Puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
             for (int i = 0; i < response.participants.Count; i++)
             {
                 string str = $"https://jp1.api.riotgames.com/lol/summoner/v4/summoners/{response.participants[i].summonerId}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-                LOM.Instance.LiveGameManager.SetMatchMenberPUUID(str);
+                LOM.Instance.LiveGameManager.SetMatchMenberData(str);
             }
 
             LOM.Instance.LiveGameManager.IsSpectatorRequest = true;

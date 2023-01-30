@@ -14,11 +14,11 @@ public class LiveGameManager : MonoBehaviour
     [SerializeField]
     private RequestMatchIDAPI _requestMatchIDAPI = null;
     [SerializeField]
-    private RequestMatchSummonerAPI _summonerDTO_MatchMember = null;
+    private RequestMatchSummonerAPI _requestMatchMemberAPI = null;
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "ピリ辛井";
+    private string _gameName = "ゆきちッ";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -100,13 +100,8 @@ public class LiveGameManager : MonoBehaviour
         get { return _isMatchIDRequest; }
         set { _isMatchIDRequest = value; }
     }
-    private bool _isMatchSummonerRequest = false;
-    public bool IsMatchSummonerRequest
-    {
-        get { return _isMatchSummonerRequest; }
-        set { _isMatchSummonerRequest = value; }
-    }
 
+    /// <summary> マッチメンバーのデータは全部こいつに入れる予定 </summary>
     private List<LiveGameMenberData> _liveGameMenberDatas = new List<LiveGameMenberData>();
     public List<LiveGameMenberData> LiveGameMenberDatas
     {
@@ -136,22 +131,14 @@ public class LiveGameManager : MonoBehaviour
             _isSpectatorRequest = true;
             StartCoroutine(_requestSpectatorAPI.GetRequest(_requestSpectatorURL));
         }
-
-        if (_isSpectatorRequest && !_isMatchSummonerRequest)
-        {
-
-        }
-
-        //if (_isSpectatorRequest && !_isMatchIDRequest)
-        //{
-        //    if (_requestMatchIDURL == null) return;
-        //    _isMatchIDRequest = true;
-        //    StartCoroutine(_requestMatchIDAPI.GetRequest(_requestMatchIDURL));
-        //}
     }
 
-    public void SetMatchMenberPUUID(string pass)
+    public void SetMatchMenberData(string pass)
     {
-        StartCoroutine(_summonerDTO_MatchMember.GetRequest(pass));
+        StartCoroutine(_requestMatchMemberAPI.GetRequest(pass));
+    }
+    public void SetMatchData(string pass , string puuid)
+    {
+        StartCoroutine(_requestMatchIDAPI.GetRequest(pass,puuid));
     }
 }
