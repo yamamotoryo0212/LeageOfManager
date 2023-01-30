@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class RequestSummonerAPI : MonoBehaviour
+public class RequestSpectatorAPI : MonoBehaviour
 {
     public IEnumerator GetRequest(string uri)
     {
@@ -28,12 +28,10 @@ public class RequestSummonerAPI : MonoBehaviour
                 yield break;
             }
 
-            SummonerDTO response = JsonUtility.FromJson<SummonerDTO>(webRequest.downloadHandler.text);
-            Debug.Log(response.id);
-            LOM.Instance.UserData.SetSummonerId(response.id);
-            LOM.Instance.LiveGameManager.RequestSpectatorURL = $"https://jp1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{LOM.Instance.UserData.SummonerID}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+            CurrentGameInfo response = JsonUtility.FromJson<CurrentGameInfo>(webRequest.downloadHandler.text);
+            Debug.Log(response.gameId);
 
-            LOM.Instance.LiveGameManager.IsSummonerRequest = true;
+            LOM.Instance.LiveGameManager.IsSpectatorRequest = true;
             yield return null;
         }
     }
