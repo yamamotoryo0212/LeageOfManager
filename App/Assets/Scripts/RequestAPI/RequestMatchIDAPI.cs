@@ -36,9 +36,11 @@ public class RequestMatchIDAPI : MonoBehaviour
                 if (puuid == LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid)
                 {
                     LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs = response.matchIDs;
-                    Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs[0] + "," + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs[1]);
+                    //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs[0] + "," + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs[1]);
                 }
             }
+
+            LOM.Instance.LiveGameManager.IsMatchIDRequest = true;
             Debug.Log("ƒ}ƒbƒ`IDŽæ“¾Š®—¹");
           
             yield return null;

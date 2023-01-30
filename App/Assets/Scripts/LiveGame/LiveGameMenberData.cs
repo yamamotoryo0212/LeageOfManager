@@ -9,4 +9,6 @@ public class LiveGameMenberData
     public string SummonerName;
     public string SummonerID;
     public List<string> MatchIDs;
+    public List<MatchDto> MatchDtos = new List<MatchDto>();
+    public bool IsRequest = false;
 }

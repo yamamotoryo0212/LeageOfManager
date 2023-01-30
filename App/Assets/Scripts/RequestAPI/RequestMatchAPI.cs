@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class RequestMatchSummonerAPI : MonoBehaviour
+public class RequestMatchAPI : MonoBehaviour
 {
-    public IEnumerator GetRequest(string uri)
+    public IEnumerator GetRequest(string uri, string puuid)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -28,18 +28,15 @@ public class RequestMatchSummonerAPI : MonoBehaviour
                 yield break;
             }
 
-            SummonerDTO_MatchMember response = JsonUtility.FromJson<SummonerDTO_MatchMember>(webRequest.downloadHandler.text);
-
-            LiveGameMenberData liveGameMenberData = new LiveGameMenberData();
-            liveGameMenberData.Puuid = response.puuid;
-            liveGameMenberData.SummonerID = response.id;
-            liveGameMenberData.SummonerName = response.name;
-            liveGameMenberData.IsRequest = true;
-            LOM.Instance.LiveGameManager.LiveGameMenberDatas.Add(liveGameMenberData);
-
-            string pass = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{response.puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-            LOM.Instance.LiveGameManager.SetMatchIDData(pass, response.puuid);
-
+            MatchDto response = JsonUtility.FromJson<MatchDto>(webRequest.downloadHandler.text);
+            for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+            {
+                if (puuid == LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid)
+                {
+                    LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Add(response);
+                    Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " | " + response.info.gameId);
+                }
+            }
             yield return null;
         }
     }

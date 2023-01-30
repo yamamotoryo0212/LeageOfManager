@@ -15,10 +15,12 @@ public class LiveGameManager : MonoBehaviour
     private RequestMatchIDAPI _requestMatchIDAPI = null;
     [SerializeField]
     private RequestMatchSummonerAPI _requestMatchMemberAPI = null;
+    [SerializeField]
+    private RequestMatchAPI _requestMatchAPI = null;
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "ゆきちッ";
+    private string _gameName = "takatuki07";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -74,6 +76,21 @@ public class LiveGameManager : MonoBehaviour
         get { return _matchCount; }
     }
 
+    [Header("マッチリクエスト")]
+    private string _requestMatchURL = null;
+    public string RequestMatchURL
+    {
+        get { return _requestMatchURL; }
+        set
+        {
+            if (value == null && value.Length <= 0)
+            {
+                Debug.LogError("_requestMatchURLに無効な値が入りました");
+                return;
+            }
+            _requestMatchURL = value;
+        }
+    }
 
     [Header("リクエストチェック")]
     private bool _isAccountRequest = false;
@@ -94,11 +111,23 @@ public class LiveGameManager : MonoBehaviour
         get { return _isSpectatorRequest; }
         set { _isSpectatorRequest = value; }
     }
+    private bool _isMatchSummoner = false;
+    public bool IsMatchSummonerRequest
+    {
+        get { return _isMatchSummoner; }
+        set { _isMatchSummoner = value; }
+    }
     private bool _isMatchIDRequest = false;
     public bool IsMatchIDRequest
     {
         get { return _isMatchIDRequest; }
         set { _isMatchIDRequest = value; }
+    }
+    private bool _isMatchRequest = false;
+    public bool IsMatchRequest
+    {
+        get { return _isMatchRequest; }
+        set { _isMatchRequest = value; }
     }
 
     /// <summary> マッチメンバーのデータは全部こいつに入れる予定 </summary>
@@ -108,6 +137,7 @@ public class LiveGameManager : MonoBehaviour
         get { return _liveGameMenberDatas; }
     }
 
+    private int aaa = 0;
     private void Awake()
     {
         _requestAccountURL = $"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{_gameName}/{_tagLine}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
@@ -131,14 +161,40 @@ public class LiveGameManager : MonoBehaviour
             _isSpectatorRequest = true;
             StartCoroutine(_requestSpectatorAPI.GetRequest(_requestSpectatorURL));
         }
+
+        if (_isMatchIDRequest && !_isMatchRequest)
+        {
+            if (_liveGameMenberDatas == null || _liveGameMenberDatas.Count == 0) return;
+            for (int i = 0; i < _liveGameMenberDatas.Count; i++)
+            {
+                if (!_liveGameMenberDatas[i].IsRequest) return;
+            }
+
+            _isMatchRequest = true;
+            for (int i = 0; i < _liveGameMenberDatas.Count; i++)
+            {
+                if (_liveGameMenberDatas[i].MatchIDs == null) return;
+                for (int j = 0; j < _liveGameMenberDatas[i].MatchIDs.Count; j++)
+                {
+                    _requestMatchURL = $"https://asia.api.riotgames.com/lol/match/v5/matches/{_liveGameMenberDatas[i].MatchIDs[j]}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+                    StartCoroutine(_requestMatchAPI.GetRequest(_requestMatchURL, _liveGameMenberDatas[i].Puuid));
+                }
+            }            
+        }
     }
 
     public void SetMatchMenberData(string pass)
     {
         StartCoroutine(_requestMatchMemberAPI.GetRequest(pass));
     }
-    public void SetMatchData(string pass , string puuid)
+
+    public void SetMatchIDData(string pass , string puuid)
     {
         StartCoroutine(_requestMatchIDAPI.GetRequest(pass,puuid));
+    }
+
+    public void SetMatchData(string pass, string puuid)
+    {
+        StartCoroutine(_requestMatchAPI.GetRequest(pass, puuid));
     }
 }
