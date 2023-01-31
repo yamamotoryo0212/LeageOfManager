@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "takatuki07";
+    private string _gameName = "厄介ピンク";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -70,7 +70,7 @@ public class LiveGameManager : MonoBehaviour
             _requestMatchIDURL = value;
         }
     }
-    private int _matchCount = 2;
+    private int _matchCount = 1;
     public int MatchCount
     {
         get { return _matchCount; }
@@ -137,7 +137,7 @@ public class LiveGameManager : MonoBehaviour
         get { return _liveGameMenberDatas; }
     }
 
-    private int aaa = 0;
+    private float _currentTime = 0f;
     private void Awake()
     {
         _requestAccountURL = $"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{_gameName}/{_tagLine}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
@@ -146,41 +146,42 @@ public class LiveGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!_isAccountRequest) return;
-
-        if (_isAccountRequest && !_isSummonerRequest)
+        _currentTime += Time.deltaTime;
+        if (_currentTime > 1)
         {
-            _isSummonerRequest = true;
-            StartCoroutine(_requestSummonerAPI.GetRequest(_requestSummonerURL));
-        }
+            if (!_isAccountRequest) return;
 
-        if (_isSummonerRequest && !_isSpectatorRequest)
-        {
-            if (_requestSpectatorURL == null) return;
-
-            _isSpectatorRequest = true;
-            StartCoroutine(_requestSpectatorAPI.GetRequest(_requestSpectatorURL));
-        }
-
-        if (_isMatchIDRequest && !_isMatchRequest)
-        {
-            if (_liveGameMenberDatas == null || _liveGameMenberDatas.Count == 0) return;
-            for (int i = 0; i < _liveGameMenberDatas.Count; i++)
+            if (_isAccountRequest && !_isSummonerRequest)
             {
-                if (!_liveGameMenberDatas[i].IsRequest) return;
+                _isSummonerRequest = true;
+                StartCoroutine(_requestSummonerAPI.GetRequest(_requestSummonerURL));
             }
 
-            _isMatchRequest = true;
-            for (int i = 0; i < _liveGameMenberDatas.Count; i++)
+            if (_isSummonerRequest && !_isSpectatorRequest)
             {
-                if (_liveGameMenberDatas[i].MatchIDs == null) return;
-                for (int j = 0; j < _liveGameMenberDatas[i].MatchIDs.Count; j++)
+                if (_requestSpectatorURL == null) return;
+
+                _isSpectatorRequest = true;
+                StartCoroutine(_requestSpectatorAPI.GetRequest(_requestSpectatorURL));
+            }
+
+
+
+            if (LiveGameMenberDatas.Count >= 0)
+            {
+                for (int i = 0; i < _liveGameMenberDatas.Count; i++)
                 {
-                    _requestMatchURL = $"https://asia.api.riotgames.com/lol/match/v5/matches/{_liveGameMenberDatas[i].MatchIDs[j]}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-                    StartCoroutine(_requestMatchAPI.GetRequest(_requestMatchURL, _liveGameMenberDatas[i].Puuid));
+                    if (_liveGameMenberDatas[i].MatchIDs == null) return;
+                    for (int j = 0; j < _liveGameMenberDatas[i].MatchIDs.Count; j++)
+                    {
+                        if (_liveGameMenberDatas[i].IsRequest) return;
+                        _requestMatchURL = $"https://asia.api.riotgames.com/lol/match/v5/matches/{_liveGameMenberDatas[i].MatchIDs[j]}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+                        StartCoroutine(_requestMatchAPI.GetRequest(_requestMatchURL, _liveGameMenberDatas[i].Puuid));
+                    }
                 }
-            }            
-        }
+            }
+            _currentTime = 0f;
+        }                   
     }
 
     public void SetMatchMenberData(string pass)
