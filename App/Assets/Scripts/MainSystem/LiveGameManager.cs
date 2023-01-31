@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "厄介ピンク";
+    private string _gameName = "Yunica";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -70,7 +70,7 @@ public class LiveGameManager : MonoBehaviour
             _requestMatchIDURL = value;
         }
     }
-    private int _matchCount = 1;
+    private int _matchCount = 100;
     public int MatchCount
     {
         get { return _matchCount; }
@@ -167,19 +167,19 @@ public class LiveGameManager : MonoBehaviour
 
 
 
-            if (LiveGameMenberDatas.Count >= 0)
-            {
-                for (int i = 0; i < _liveGameMenberDatas.Count; i++)
-                {
-                    if (_liveGameMenberDatas[i].MatchIDs == null) return;
-                    for (int j = 0; j < _liveGameMenberDatas[i].MatchIDs.Count; j++)
-                    {
-                        if (_liveGameMenberDatas[i].IsRequest) return;
-                        _requestMatchURL = $"https://asia.api.riotgames.com/lol/match/v5/matches/{_liveGameMenberDatas[i].MatchIDs[j]}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-                        StartCoroutine(_requestMatchAPI.GetRequest(_requestMatchURL, _liveGameMenberDatas[i].Puuid));
-                    }
-                }
-            }
+            //if (LiveGameMenberDatas.Count >= 0)
+            //{
+            //    for (int i = 0; i < _liveGameMenberDatas.Count; i++)
+            //    {
+            //        if (_liveGameMenberDatas[i].MatchIDs == null) return;
+            //        for (int j = 0; j < _liveGameMenberDatas[i].MatchIDs.Count; j++)
+            //        {
+            //            if (_liveGameMenberDatas[i].IsRequest) return;
+            //            _requestMatchURL = $"https://asia.api.riotgames.com/lol/match/v5/matches/{_liveGameMenberDatas[i].MatchIDs[j]}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+            //            StartCoroutine(_requestMatchAPI.GetRequest(_requestMatchURL, _liveGameMenberDatas[i].Puuid));
+            //        }
+            //    }
+            //}
             _currentTime = 0f;
         }                   
     }
