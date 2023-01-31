@@ -36,7 +36,7 @@ public class RequestMatchIDAPI : MonoBehaviour
                 if (puuid == LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid)
                 {
                     LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs = response.matchIDs;
-                    Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs.Count);
+                    //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchIDs.Count);
                 }
             }
 

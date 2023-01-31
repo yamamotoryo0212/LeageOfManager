@@ -35,7 +35,8 @@ public class RequestSpectatorAPI : MonoBehaviour
             for (int i = 0; i < response.participants.Count; i++)
             {
                 string str = $"https://jp1.api.riotgames.com/lol/summoner/v4/summoners/{response.participants[i].summonerId}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-                LOM.Instance.LiveGameManager.SetMatchMenberData(str);
+                LOM.Instance.LiveGameManager.SetMatchMenberData(str, response.participants[i].championId);
+                Debug.Log(response.participants[i].summonerName + " : " + response.participants[i].championId);
             }
 
             LOM.Instance.LiveGameManager.IsSpectatorRequest = true;

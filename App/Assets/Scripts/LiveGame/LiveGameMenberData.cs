@@ -11,4 +11,5 @@ public class LiveGameMenberData
     public List<string> MatchIDs;
     public List<MatchDto> MatchDtos = new List<MatchDto>();
     public bool IsRequest = false;
+    public long ChampionID;
 }
