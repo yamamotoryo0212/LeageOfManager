@@ -24,4 +24,11 @@ public class LOM : SingletonMonoBehaviour<LOM>
     {
         get { return _liveGameManager; }
     }
+
+    [SerializeField]
+    private UIManager _uIManager = null;
+    public UIManager UIManager
+    {
+        get { return _uIManager; }
+    }
 }
