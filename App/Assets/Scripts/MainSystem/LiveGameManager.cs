@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "マンタロ";
+    private string _gameName = "吉田ねもうす";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -140,8 +140,7 @@ public class LiveGameManager : MonoBehaviour
     private float _currentTime = 0f;
     private void Awake()
     {
-        _requestAccountURL = $"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{_gameName}/{_tagLine}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-        StartCoroutine(_requestAccountAPI.GetRequest(_requestAccountURL));
+        _requestAccountURL = $"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{_gameName}/{_tagLine}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";       
     }
 
     private void Update()
@@ -149,7 +148,10 @@ public class LiveGameManager : MonoBehaviour
         _currentTime += Time.deltaTime;
         if (_currentTime > 1)
         {
-            if (!_isAccountRequest) return;
+            if (!_isAccountRequest)
+            {
+                StartCoroutine(_requestAccountAPI.GetRequest(_requestAccountURL));
+            }
 
             if (_isAccountRequest && !_isSummonerRequest)
             {
