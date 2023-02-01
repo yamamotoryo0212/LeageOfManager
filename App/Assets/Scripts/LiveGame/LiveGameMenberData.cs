@@ -12,4 +12,5 @@ public class LiveGameMenberData
     public List<MatchDto> MatchDtos = new List<MatchDto>();
     public bool IsRequest = false;
     public long ChampionID;
+    public bool IsMatchHistory;
 }
