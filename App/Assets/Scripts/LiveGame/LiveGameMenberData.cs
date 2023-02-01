@@ -13,4 +13,5 @@ public class LiveGameMenberData
     public bool IsRequest = false;
     public long ChampionID;
     public bool IsMatchHistory;
+    public bool IsWinCount;
 }

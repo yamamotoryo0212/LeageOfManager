@@ -25,6 +25,7 @@ public class SummonerDropdown : MonoBehaviour
         }
         if (_dropdown.value <= 0) return;
         LOM.Instance.UIManager.LiveGameUIManager.SetMatchHistory(_dropdown.value);
+        LOM.Instance.UIManager.LiveGameUIManager.WinRate();
     }
 
     private void SetWinRate(int dropDownValue)
