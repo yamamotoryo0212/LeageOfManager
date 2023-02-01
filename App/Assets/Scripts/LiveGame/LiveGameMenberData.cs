@@ -10,7 +10,7 @@ public class LiveGameMenberData
     public string SummonerID;
     public List<string> MatchIDs;
     public List<MatchDto> MatchDtos = new List<MatchDto>();
-    public bool IsRequest = false;
+    public bool IsMatchDataRequest = false;
     public long ChampionID;
     public bool IsMatchHistory;
     public bool IsWinCount;

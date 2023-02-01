@@ -34,9 +34,7 @@ public class RequestMatchAPI : MonoBehaviour
                 if (puuid == LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid)
                 {
                     LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Add(response);
-                    LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].IsRequest = true;
-                    //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " | " + response.info.gameId);
-                    //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count);
+                    LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].IsMatchDataRequest = true;
                 }
             }
             yield return null;

@@ -39,7 +39,7 @@ public class LiveGameUIManager : MonoBehaviour
         _winRateText.text = "Not Found";
         for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
         {
-            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].IsRequest)
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].IsMatchDataRequest)
             {
                 for (int j = 0; j < LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count; j++)
                 {
