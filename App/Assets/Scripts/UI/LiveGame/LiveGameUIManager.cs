@@ -36,7 +36,10 @@ public class LiveGameUIManager : MonoBehaviour
             {
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return str;
 
-                str = (((LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].WinCount * 1.0f) / (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count * 1.0f)) * 100).ToString();
+                string winRate = (((LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].WinCount * 1.0f) / (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count * 1.0f)) * 100).ToString("N2");
+                str = $"íºãﬂ{LOM.Instance.LiveGameManager.MatchCount}êÌÇÃèüó¶ : " +
+                        winRate +
+                        "%";
             }
         }
         return str;
