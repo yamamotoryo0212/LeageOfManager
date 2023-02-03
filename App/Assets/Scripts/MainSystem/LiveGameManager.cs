@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "つぐちゃん";
+    private string _gameName = "Yunica";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -91,7 +91,7 @@ public class LiveGameManager : MonoBehaviour
             _requestMatchURL = value;
         }
     }
-    private int _matchCount = 0;
+    private int _matchCount = 15;
     public int MatchCount
     {
         get { return _matchCount; }

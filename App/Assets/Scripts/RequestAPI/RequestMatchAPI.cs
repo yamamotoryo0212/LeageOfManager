@@ -37,6 +37,34 @@ public class RequestMatchAPI : MonoBehaviour
                     LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].IsMatchDataRequest = true;
                 }
             }
+
+
+            bool a = false;
+            int index = 0;
+
+            for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid == puuid)
+                {
+                    index = i;
+                    a = true;                    
+                }
+            }
+           
+            if (a)
+            {
+                for (int i = 0; i < response.info.participants.Count; i++)
+                {
+                    if (response.info.participants[i].puuid == puuid)
+                    {
+                        if (response.info.participants[i].win)
+                        {
+                            LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].WinCount++;
+                        }                        
+                    }
+                }
+            }
+          
             yield return null;
         }
     }
