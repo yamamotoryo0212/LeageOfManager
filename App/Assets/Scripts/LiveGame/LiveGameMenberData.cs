@@ -14,4 +14,5 @@ public class LiveGameMenberData
     public long ChampionID;
     public bool IsMatchHistory;
     public bool IsWinCount;
+    public int WinCount;
 }

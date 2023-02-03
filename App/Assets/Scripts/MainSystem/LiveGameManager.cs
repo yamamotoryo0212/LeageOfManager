@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "シンイチロォ";
+    private string _gameName = "つぐちゃん";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -70,10 +70,10 @@ public class LiveGameManager : MonoBehaviour
             _requestMatchIDURL = value;
         }
     }
-    private int _matchCount = 100;
-    public int MatchCount
+    private int _matchIDCount = 100;
+    public int MatchIDCount
     {
-        get { return _matchCount; }
+        get { return _matchIDCount; }
     }
 
     [Header("マッチリクエスト")]
@@ -91,8 +91,11 @@ public class LiveGameManager : MonoBehaviour
             _requestMatchURL = value;
         }
     }
-
-    [Header("リクエストチェック")]
+    private int _matchCount = 0;
+    public int MatchCount
+    {
+        get { return _matchCount; }
+    }
     private bool _isAccountRequest = false;
     public bool IsAccountRequest
     {

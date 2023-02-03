@@ -12,7 +12,7 @@ public class LiveGameUIManager : MonoBehaviour
     private int _winCount = 0;
     private void Update()
     {
-        test.text = _winCount.ToString();
+        
     }
 
     public void SetMatchHistory(int dropDownValue)
@@ -23,7 +23,7 @@ public class LiveGameUIManager : MonoBehaviour
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].MatchIDs.Count; i++)
             {
-                if (i == 15)
+                if (i == LOM.Instance.LiveGameManager.MatchCount)
                 {
                     break;
                 }
@@ -51,12 +51,59 @@ public class LiveGameUIManager : MonoBehaviour
                             if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos[j].info.participants[k].win)
                             {
                                 _winCount++;
-                                _winRateText.text = _winCount.ToString();
+                                LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].WinCount++;
+                                Debug.Log((LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos[j].info.participants[k].summonerName +
+                                                   LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].WinCount));
                             }
                         }
                     }
                 }
             }
         }        
+    }
+
+    public void Test(int dropDownValue)
+    {
+        int summonerNum = -1;
+        int participants = -1;
+        bool iswin = false;
+        int winCount = 0;
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerID == 
+                LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].SummonerID)
+            {
+                summonerNum = i;
+            }
+        }
+
+        if (summonerNum >= 0)
+        {
+            for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas[summonerNum].MatchDtos.Count; i++)
+            {
+                for (int j = 0; j < LOM.Instance.LiveGameManager.LiveGameMenberDatas[summonerNum].MatchDtos[i].info.participants.Count; j++)
+                {
+                    if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[summonerNum].MatchDtos[i].info.participants[j].summonerId ==
+                    LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].SummonerID)
+                    {
+                        participants = j;
+                        iswin = true;
+                    }
+                }
+            }
+        }
+
+        if (iswin)
+        {
+            for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas[summonerNum].MatchDtos.Count; i++)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[summonerNum].MatchDtos[i].info.participants[participants].win)
+                {
+                    winCount++; 
+                    _winRateText.text = winCount.ToString();
+                }
+            }            
+        }
     }
 }

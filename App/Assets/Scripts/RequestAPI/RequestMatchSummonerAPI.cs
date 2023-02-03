@@ -37,7 +37,7 @@ public class RequestMatchSummonerAPI : MonoBehaviour
             liveGameMenberData.ChampionID = chanpionId;
             LOM.Instance.LiveGameManager.LiveGameMenberDatas.Add(liveGameMenberData);
 
-            string pass = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{response.puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+            string pass = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{response.puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchIDCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
             LOM.Instance.LiveGameManager.SetMatchIDData(pass, response.puuid);
 
             yield return null;
