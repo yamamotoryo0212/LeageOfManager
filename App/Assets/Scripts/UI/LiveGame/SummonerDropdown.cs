@@ -10,6 +10,9 @@ public class SummonerDropdown : MonoBehaviour
     private TMP_Dropdown _dropdown = null;
     [SerializeField]
     private TextMeshProUGUI _winRateText = null;
+    [SerializeField]
+    private Image _backGround = null;
+
     private bool _isSet = false;
     private float _currentTime = 0f;
 
@@ -37,8 +40,10 @@ public class SummonerDropdown : MonoBehaviour
             }
 
             if (_dropdown.options.Count <= 0) return;
+
             LOM.Instance.UIManager.LiveGameUIManager.SetMatchHistory(_dropdown.value);
             _winRateText.text = LOM.Instance.UIManager.LiveGameUIManager.SetWinRate(_dropdown.options[_dropdown.value].text);
+            _backGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetBackGround(_dropdown.options[_dropdown.value].text);
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {

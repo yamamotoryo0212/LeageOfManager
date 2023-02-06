@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class LiveGameUIManager : MonoBehaviour
@@ -48,5 +49,21 @@ public class LiveGameUIManager : MonoBehaviour
             }
         }
         return str;
+    }
+
+    public Sprite SetBackGround(string summonerName)
+    {
+        Sprite sprite = Resources.Load<Sprite>("Splash/9999");
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
+                Debug.Log($"Splash/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}");
+                sprite = (Sprite)Resources.Load($"Splash/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}",typeof(Sprite));
+            }
+        }
+        return sprite;
     }
 }
