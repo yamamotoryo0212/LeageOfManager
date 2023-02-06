@@ -44,6 +44,7 @@ public class LiveGameUIManager : MonoBehaviour
                 str = $"’¼‹ß{LOM.Instance.LiveGameManager.MatchCount}í‚ÌŸ—¦ : " +
                         winRate +
                         "%";
+                Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.teamId);
             }
         }
         return str;

@@ -29,9 +29,9 @@ public class SummonerDropdown : MonoBehaviour
                     _dropdown.options.Add(new TMP_Dropdown.OptionData
                     {
                         text = LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName +
-                                                                                                                    "(" +
-                                                                                                                    LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] +
-                                                                                                                    ")"
+                                  "(" +
+                                  LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] +
+                                  ")"
                     });
                 }
             }
@@ -46,6 +46,6 @@ public class SummonerDropdown : MonoBehaviour
             }
             _currentTime = 0f;
         }
-        
+
     }
 }

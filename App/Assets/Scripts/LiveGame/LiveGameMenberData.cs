@@ -15,4 +15,5 @@ public class LiveGameMenberData
     public bool IsMatchHistory;
     public bool IsWinCount;
     public int WinCount;
+    public CurrentGameParticipant CurrentGameParticipant;
 }

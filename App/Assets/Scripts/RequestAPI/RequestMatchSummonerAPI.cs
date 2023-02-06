@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class RequestMatchSummonerAPI : MonoBehaviour
 {
-    public IEnumerator GetRequest(string uri, long chanpionId)
+    public IEnumerator GetRequest(string uri, long chanpionId, CurrentGameParticipant currentGameParticipant)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -35,6 +35,7 @@ public class RequestMatchSummonerAPI : MonoBehaviour
             liveGameMenberData.SummonerID = response.id;
             liveGameMenberData.SummonerName = response.name;
             liveGameMenberData.ChampionID = chanpionId;
+            liveGameMenberData.CurrentGameParticipant = currentGameParticipant;
             LOM.Instance.LiveGameManager.LiveGameMenberDatas.Add(liveGameMenberData);
 
             string pass = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{response.puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchIDCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";

@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "とおこ";
+    private string _gameName = "Yunica";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -189,9 +189,9 @@ public class LiveGameManager : MonoBehaviour
         }                   
     }
 
-    public void SetMatchMenberData(string pass, long championID)
+    public void SetMatchMenberData(string pass, long championID, CurrentGameParticipant currentGameParticipant)
     {
-        StartCoroutine(_requestMatchMemberAPI.GetRequest(pass,championID));
+        StartCoroutine(_requestMatchMemberAPI.GetRequest(pass,championID,currentGameParticipant));
     }
 
     public void SetMatchIDData(string pass , string puuid)
