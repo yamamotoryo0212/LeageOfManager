@@ -29,13 +29,14 @@ public class LiveGameUIManager : MonoBehaviour
 
     public string SetWinRate(string summonerName)
     {
-        string str = "Not Found";
+        string str = "Loading....";
         for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
         {
             if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName +
-                                                                                                                "(" +
-                                                                                                                LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] +
-                                                                                                                ")" == summonerName )
+                "(" +
+                LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] +
+                ")" == summonerName
+               )
             {
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return str;
 
