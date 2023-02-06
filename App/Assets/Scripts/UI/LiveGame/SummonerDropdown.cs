@@ -15,19 +15,21 @@ public class SummonerDropdown : MonoBehaviour
 
     private void Update()
     {
-
-
         if (LOM.Instance.LiveGameManager.IsMatchIDRequest && !_isSet)
         {
             _isSet = true;
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {
-                _dropdown.options.Add(new TMP_Dropdown.OptionData { text = LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName });
+                _dropdown.options.Add(new TMP_Dropdown.OptionData { text = LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName +
+                                                                                                                "(" +
+                                                                                                                LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] +
+                                                                                                                ")"
+                                                                                                             });
             }
         }
 
-        if (_dropdown.value <= 0) return;
+        if (_dropdown.options.Count <= 0) return;
         LOM.Instance.UIManager.LiveGameUIManager.SetMatchHistory(_dropdown.value);
         _winRateText.text = LOM.Instance.UIManager.LiveGameUIManager.SetWinRate(_dropdown.options[_dropdown.value].text);
 
@@ -35,14 +37,5 @@ public class SummonerDropdown : MonoBehaviour
         {
             Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].WinCount);
         }
-
-        //Debug.Log(_dropdown.options[_dropdown.value].text);
-        //LOM.Instance.UIManager.LiveGameUIManager.WinRate();
-        //LOM.Instance.UIManager.LiveGameUIManager.Test(_dropdown.value);
-    }
-
-    private void SetWinRate(int dropDownValue)
-    {
-
     }
 }

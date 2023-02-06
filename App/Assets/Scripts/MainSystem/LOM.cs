@@ -31,4 +31,11 @@ public class LOM : SingletonMonoBehaviour<LOM>
     {
         get { return _uIManager; }
     }
+
+    [SerializeField]
+    private RiotIDDataManager _riotIDDataManager = null;
+    public RiotIDDataManager RiotIDDataManager
+    {
+        get { return _riotIDDataManager; }
+    }
 }

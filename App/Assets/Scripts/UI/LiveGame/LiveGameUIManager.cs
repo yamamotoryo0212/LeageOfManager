@@ -32,7 +32,10 @@ public class LiveGameUIManager : MonoBehaviour
         string str = "Not Found";
         for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
         {
-            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName == summonerName)
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName +
+                                                                                                                "(" +
+                                                                                                                LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] +
+                                                                                                                ")" == summonerName )
             {
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return str;
 
