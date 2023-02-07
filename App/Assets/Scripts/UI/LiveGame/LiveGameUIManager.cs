@@ -46,6 +46,7 @@ public class LiveGameUIManager : MonoBehaviour
                         winRate +
                         "%";
                 Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.teamId);
+                Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.spell1Id);
             }
         }
         return str;
@@ -60,10 +61,41 @@ public class LiveGameUIManager : MonoBehaviour
             if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
             {
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
-                Debug.Log($"Splash/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}");
+                //Debug.Log($"Splash/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}");
                 sprite = (Sprite)Resources.Load($"Splash/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}",typeof(Sprite));
             }
         }
         return sprite;
+    }
+
+    public Sprite[] SetSummonerSpell(string summonerName)
+    {
+        Sprite[] sprite = new Sprite[] { Resources.Load<Sprite>("SummoneSpellIcon/999"), Resources.Load<Sprite>("SummoneSpellIcon/999") };
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
+                //Debug.Log($"Splash/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}");
+                sprite[0] = (Sprite)Resources.Load($"SummoneSpellIcon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.spell1Id}", typeof(Sprite));
+                sprite[1] = (Sprite)Resources.Load($"SummoneSpellIcon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.spell2Id}", typeof(Sprite));
+            }
+        }
+        return sprite;
+    }
+
+    public string SetSummonerName(string summonerName)
+    {
+        string name = "Loading...";
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return name;
+                name = LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName;
+            }
+        }
+        return name;
     }
 }

@@ -11,7 +11,13 @@ public class SummonerDropdown : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _winRateText = null;
     [SerializeField]
+    private TextMeshProUGUI _summonerName = null;
+    [SerializeField]
     private Image _backGround = null;
+    [SerializeField]
+    private Image _summonerSpell001 = null;
+    [SerializeField]
+    private Image _summonerSpell002 = null;
 
     private bool _isSet = false;
     private float _currentTime = 0f;
@@ -44,6 +50,9 @@ public class SummonerDropdown : MonoBehaviour
             LOM.Instance.UIManager.LiveGameUIManager.SetMatchHistory(_dropdown.value);
             _winRateText.text = LOM.Instance.UIManager.LiveGameUIManager.SetWinRate(_dropdown.options[_dropdown.value].text);
             _backGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetBackGround(_dropdown.options[_dropdown.value].text);
+            _summonerSpell001.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerSpell(_dropdown.options[_dropdown.value].text)[0];
+            _summonerSpell002.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerSpell(_dropdown.options[_dropdown.value].text)[1];
+            _summonerName.text = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerName(_dropdown.options[_dropdown.value].text);
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {
