@@ -47,6 +47,18 @@ public class SummonerDropdown : MonoBehaviour
 
             if (_dropdown.options.Count <= 0) return;
 
+            //TODO:
+            if (_dropdown.value == 0)
+            {
+                foreach (var item in _dropdown.GetComponentsInChildren<TextMeshProUGUI>())
+                {
+                    if (item.name == "Label")
+                    {
+                        item.GetComponent<TextMeshProUGUI>().text = _dropdown.options[0].text;
+                    }
+                }
+            }
+
             LOM.Instance.UIManager.LiveGameUIManager.SetMatchHistory(_dropdown.value);
             _winRateText.text = LOM.Instance.UIManager.LiveGameUIManager.SetWinRate(_dropdown.options[_dropdown.value].text);
             _backGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetBackGround(_dropdown.options[_dropdown.value].text);
