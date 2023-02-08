@@ -98,4 +98,18 @@ public class LiveGameUIManager : MonoBehaviour
         }
         return name;
     }
+
+    public string SetSummonerLevel(string summonerName)
+    {
+        string name = "Loading...";
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return name;
+                name =  "Lv : "+ LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummoneLevel.ToString();
+            }
+        }
+        return name;
+    }
 }

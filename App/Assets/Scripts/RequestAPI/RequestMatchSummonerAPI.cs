@@ -36,6 +36,7 @@ public class RequestMatchSummonerAPI : MonoBehaviour
             liveGameMenberData.SummonerName = response.name;
             liveGameMenberData.ChampionID = chanpionId;
             liveGameMenberData.CurrentGameParticipant = currentGameParticipant;
+            liveGameMenberData.SummoneLevel = response.summonerLevel;
             LOM.Instance.LiveGameManager.LiveGameMenberDatas.Add(liveGameMenberData);
 
             string pass = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{response.puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchIDCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";

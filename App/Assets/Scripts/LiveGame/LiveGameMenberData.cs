@@ -16,4 +16,5 @@ public class LiveGameMenberData
     public bool IsWinCount;
     public int WinCount;
     public CurrentGameParticipant CurrentGameParticipant;
+    public long SummoneLevel;
 }
