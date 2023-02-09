@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "ゆきちッ";
+    private string _gameName = "なぎさっち";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]

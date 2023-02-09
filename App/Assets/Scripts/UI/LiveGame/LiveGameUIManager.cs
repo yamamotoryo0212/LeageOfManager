@@ -131,4 +131,19 @@ public class LiveGameUIManager : MonoBehaviour
         }
         return sprite;
     }
+    public Sprite SetMainRuneBackGround(string summonerName)
+    {
+        Sprite sprite = Resources.Load<Sprite>("Perks/9999");
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
+                
+                sprite = (Sprite)Resources.Load($"Perks/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.perks.perkStyle}BG", typeof(Sprite));
+            }
+        }
+        return sprite;
+    }
 }

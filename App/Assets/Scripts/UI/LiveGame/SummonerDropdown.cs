@@ -22,6 +22,8 @@ public class SummonerDropdown : MonoBehaviour
     private Image _summonerSpell002 = null;
     [SerializeField]
     private List<Image> _perks = new List<Image>();
+    [SerializeField]
+    private Image _mainRuneBackGround = null;
 
     private bool _isSet = false;
     private float _currentTime = 0f;
@@ -76,6 +78,7 @@ public class SummonerDropdown : MonoBehaviour
             {
                 _perks[i].sprite = sprites[i];
             }
+            _mainRuneBackGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetMainRuneBackGround(_dropdown.options[_dropdown.value].text);
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {
