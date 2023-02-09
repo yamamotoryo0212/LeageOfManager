@@ -20,6 +20,8 @@ public class SummonerDropdown : MonoBehaviour
     private Image _summonerSpell001 = null;
     [SerializeField]
     private Image _summonerSpell002 = null;
+    [SerializeField]
+    private List<Image> _perks = new List<Image>();
 
     private bool _isSet = false;
     private float _currentTime = 0f;
@@ -68,6 +70,12 @@ public class SummonerDropdown : MonoBehaviour
             _summonerSpell002.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerSpell(_dropdown.options[_dropdown.value].text)[1];
             _summonerName.text = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerName(_dropdown.options[_dropdown.value].text);
             _summonerLevel.text = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerLevel(_dropdown.options[_dropdown.value].text);
+            List<Sprite> sprites = LOM.Instance.UIManager.LiveGameUIManager.SetPerks(_dropdown.options[_dropdown.value].text);
+            if (sprites.Count <= 0) return;
+            for (int i = 0; i < _perks.Count; i++)
+            {
+                _perks[i].sprite = sprites[i];
+            }
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {
@@ -75,6 +83,5 @@ public class SummonerDropdown : MonoBehaviour
             }
             _currentTime = 0f;
         }
-
     }
 }

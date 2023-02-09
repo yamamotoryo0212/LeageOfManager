@@ -112,4 +112,23 @@ public class LiveGameUIManager : MonoBehaviour
         }
         return name;
     }
+
+    public List<Sprite> SetPerks(string summonerName)
+    {
+        List<Sprite> sprite = new List<Sprite>();
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
+
+                for (int j = 0; j < LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.perks.perkIds.Count; j++)
+                {
+                    sprite.Add((Sprite)Resources.Load($"Perks/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.perks.perkIds[j]}", typeof(Sprite)));
+                }             
+            }
+        }
+        return sprite;
+    }
 }
