@@ -45,7 +45,7 @@ public class LiveGameUIManager : MonoBehaviour
                 str = $"íºãﬂ{LOM.Instance.LiveGameManager.MatchCount}êÌÇÃèüó¶ : " +
                         winRate +
                         "%";
-                Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.teamId);
+                //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.teamId);
                 //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.spell1Id);
             }
         }
@@ -201,7 +201,7 @@ public class LiveGameUIManager : MonoBehaviour
             if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
             {
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
-                Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
+                //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
                 sprite = (Sprite)Resources.Load($"Icon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}", typeof(Sprite));
             }
         }

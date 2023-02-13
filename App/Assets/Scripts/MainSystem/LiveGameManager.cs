@@ -17,10 +17,12 @@ public class LiveGameManager : MonoBehaviour
     private RequestMatchSummonerAPI _requestMatchMemberAPI = null;
     [SerializeField]
     private RequestMatchAPI _requestMatchAPI = null;
+    [SerializeField]
+    private RequestLeageAPI _requestLeageAPI = null;
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "しろあり";
+    private string _gameName = "つぐちゃん";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -197,6 +199,11 @@ public class LiveGameManager : MonoBehaviour
     public void SetMatchIDData(string pass , string puuid)
     {
         StartCoroutine(_requestMatchIDAPI.GetRequest(pass,puuid));
+    }
+
+    public void SetLeageData(string pass, string puuid)
+    {
+        StartCoroutine(_requestLeageAPI.GetRequest(pass, puuid));
     }
 
     public void SetMatchData(string pass, string puuid)

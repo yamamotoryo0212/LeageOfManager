@@ -40,10 +40,11 @@ public class RequestMatchSummonerAPI : MonoBehaviour
             liveGameMenberData.TeamID = (int)currentGameParticipant.teamId;
             LOM.Instance.LiveGameManager.LiveGameMenberDatas.Add(liveGameMenberData);
 
-            string pass = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{response.puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchIDCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-            LOM.Instance.LiveGameManager.SetMatchIDData(pass, response.puuid);
-
-            yield return null;
+            string matchPass = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{response.puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchIDCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+            string leagePass = $"https://jp1.api.riotgames.com/lol/league/v4/entries/by-summoner/{response.id}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+            LOM.Instance.LiveGameManager.SetMatchIDData(matchPass, response.puuid);
+            LOM.Instance.LiveGameManager.SetLeageData(leagePass, response.puuid);
+           yield return null;
         }
     }
 }
