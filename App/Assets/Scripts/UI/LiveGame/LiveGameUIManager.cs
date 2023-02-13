@@ -191,4 +191,20 @@ public class LiveGameUIManager : MonoBehaviour
         }
         return sprite;
     }
+
+    public Sprite SetChampionIcon(string summonerName)
+    {
+        Sprite sprite = Resources.Load<Sprite>("Icon/9999");
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
+                Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
+                sprite = (Sprite)Resources.Load($"Icon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}", typeof(Sprite));
+            }
+        }
+        return sprite;
+    }
 }

@@ -61,9 +61,9 @@ public class RequestMatchAPI : MonoBehaviour
                         LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Kill += response.info.participants[i].kills;
                         LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Death += response.info.participants[i].deaths;
                         LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Assist += response.info.participants[i].assists;
-                        Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Kill + " : " +
-                                           LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Death + " : " +
-                                           LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Assist);
+                        //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Kill + " : " +
+                        //                   LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Death + " : " +
+                        //                   LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Assist);
                         if (response.info.participants[i].win)
                         {
                             LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].WinCount++;

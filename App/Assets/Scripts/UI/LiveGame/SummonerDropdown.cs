@@ -28,6 +28,8 @@ public class SummonerDropdown : MonoBehaviour
     private Image _mainRuneBackGround = null;
     [SerializeField]
     private Image _subRuneBackGround = null;
+    [SerializeField]
+    private Image _championIcon = null;
 
     private bool _isSet = false;
     private float _currentTime = 0f;
@@ -85,6 +87,7 @@ public class SummonerDropdown : MonoBehaviour
             }
             _mainRuneBackGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetMainRuneBackGround(_dropdown.options[_dropdown.value].text);
             _subRuneBackGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSubRuneBackGround(_dropdown.options[_dropdown.value].text);
+            _championIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetChampionIcon(_dropdown.options[_dropdown.value].text);
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {
