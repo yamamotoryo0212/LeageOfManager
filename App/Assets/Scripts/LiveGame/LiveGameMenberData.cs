@@ -17,4 +17,8 @@ public class LiveGameMenberData
     public int WinCount;
     public CurrentGameParticipant CurrentGameParticipant;
     public long SummoneLevel;
+    public int TeamID;
+    public int Kill;
+    public int Death;
+    public int Assist;
 }

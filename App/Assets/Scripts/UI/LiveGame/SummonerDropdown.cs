@@ -15,6 +15,8 @@ public class SummonerDropdown : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _summonerLevel = null;
     [SerializeField]
+    private TextMeshProUGUI _kdaText = null;
+    [SerializeField]
     private Image _backGround = null;
     [SerializeField]
     private Image _summonerSpell001 = null;
@@ -75,6 +77,7 @@ public class SummonerDropdown : MonoBehaviour
             _summonerName.text = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerName(_dropdown.options[_dropdown.value].text);
             _summonerLevel.text = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerLevel(_dropdown.options[_dropdown.value].text);
             List<Sprite> sprites = LOM.Instance.UIManager.LiveGameUIManager.SetPerks(_dropdown.options[_dropdown.value].text);
+            _kdaText.text = LOM.Instance.UIManager.LiveGameUIManager.SetKDA(_dropdown.options[_dropdown.value].text);
             if (sprites.Count <= 0) return;
             for (int i = 0; i < _perks.Count; i++)
             {

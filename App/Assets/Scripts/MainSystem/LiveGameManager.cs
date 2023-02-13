@@ -20,7 +20,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "Naruuu";
+    private string _gameName = "sumovire";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -189,9 +189,9 @@ public class LiveGameManager : MonoBehaviour
         }                   
     }
 
-    public void SetMatchMenberData(string pass, long championID, CurrentGameParticipant currentGameParticipant)
+    public void SetMatchMenberData(string pass, CurrentGameParticipant currentGameParticipant)
     {
-        StartCoroutine(_requestMatchMemberAPI.GetRequest(pass,championID,currentGameParticipant));
+        StartCoroutine(_requestMatchMemberAPI.GetRequest(pass,currentGameParticipant));
     }
 
     public void SetMatchIDData(string pass , string puuid)

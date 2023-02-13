@@ -39,7 +39,7 @@ public class RequestMatchAPI : MonoBehaviour
             }
 
 
-            bool a = false;
+            bool isSummoner = false;
             int index = 0;
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
@@ -47,16 +47,23 @@ public class RequestMatchAPI : MonoBehaviour
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid == puuid)
                 {
                     index = i;
-                    a = true;                    
+                    isSummoner = true;                    
                 }
             }
            
-            if (a)
+            if (isSummoner)
             {
                 for (int i = 0; i < response.info.participants.Count; i++)
                 {
                     if (response.info.participants[i].puuid == puuid)
                     {
+                        Debug.Log(response.info.participants[i].teamPosition);
+                        LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Kill += response.info.participants[i].kills;
+                        LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Death += response.info.participants[i].deaths;
+                        LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Assist += response.info.participants[i].assists;
+                        Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Kill + " : " +
+                                           LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Death + " : " +
+                                           LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].Assist);
                         if (response.info.participants[i].win)
                         {
                             LOM.Instance.LiveGameManager.LiveGameMenberDatas[index].WinCount++;

@@ -46,7 +46,36 @@ public class LiveGameUIManager : MonoBehaviour
                         winRate +
                         "%";
                 Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.teamId);
-                Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.spell1Id);
+                //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + " : " + LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.spell1Id);
+            }
+        }
+        return str;
+    }
+
+    public string SetKDA(string summonerName)
+    {
+        float k = 0.0f;
+        float d = 0.0f;
+        float a = 0.0f;
+        string str = $"íºãﬂ{LOM.Instance.LiveGameManager.MatchCount}êÌÇÃKDA : ?/?/?";
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName +
+             "(" +
+             LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] +
+             ")" == summonerName
+            )
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return str;
+
+                k = (float)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Kill / (float)LOM.Instance.LiveGameManager.MatchCount;
+                d = (float)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Death / (float)LOM.Instance.LiveGameManager.MatchCount;
+                a = (float)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Assist / (float)LOM.Instance.LiveGameManager.MatchCount;
+                str = $"íºãﬂ{LOM.Instance.LiveGameManager.MatchCount}êÌÇÃKDA : " +
+                        $"{ k}" + "/" +
+                        $"{ d}" + "/" +
+                        $"{ a}" ;
             }
         }
         return str;
