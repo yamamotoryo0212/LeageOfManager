@@ -36,7 +36,7 @@ public class RequestSpectatorAPI : MonoBehaviour
 
             DelayMatch(response);
 
-            LOM.Instance.LiveGameManager.IsSpectatorRequest = true;
+            //LOM.Instance.LiveGameManager.IsSpectatorRequest = true;
             yield return null;
         }
     }

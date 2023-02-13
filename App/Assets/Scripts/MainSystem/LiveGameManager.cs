@@ -172,7 +172,10 @@ public class LiveGameManager : MonoBehaviour
                 StartCoroutine(_requestSpectatorAPI.GetRequest(_requestSpectatorURL));
             }
 
-
+            if (_liveGameMenberDatas.Count == 10)
+            {
+                _isSpectatorRequest = true;
+            }
 
             //if (LiveGameMenberDatas.Count >= 0)
             //{
