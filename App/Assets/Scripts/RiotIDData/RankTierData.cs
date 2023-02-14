@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class RankTierData : MonoBehaviour
+[Serializable]
+public class RankTierData
 {
     public List<string> Tier = new List<string>()
     {

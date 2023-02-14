@@ -142,8 +142,29 @@ public class LiveGameUIManager : MonoBehaviour
         return name;
     }
 
-    public string SetRankText(string summonerName)
+    public string SetRankWinRate(string summonerName)
     {
+        string winRate = "ƒ‰ƒ“ƒN‚ÌŸ—¦ :  ?";
+        for(int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return winRate;
+
+                foreach (var item in LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs)
+                {
+                    if (item.queueType == "RANKED_SOLO_5x5")
+                    {
+                        winRate = $"ƒ‰ƒ“ƒN‚ÌŸ—¦({item.wins + item.losses}í) : "  + (((float)item.wins / ((float)item.wins + (float)item.losses)) * 100).ToString("N2") + "%";
+                    }
+                }
+            }
+        }
+        return winRate;
+    }
+
+    public string SetRankText(string summonerName)
+    {        
         string tier = "unrenk";
         string rank = "unrank";
         string lp = "?";

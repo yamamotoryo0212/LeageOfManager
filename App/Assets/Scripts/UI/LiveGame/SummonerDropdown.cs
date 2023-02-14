@@ -19,6 +19,8 @@ public class SummonerDropdown : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _rankText = null;
     [SerializeField]
+    private TextMeshProUGUI _rankWinRate = null;
+    [SerializeField]
     private Image _backGround = null;
     [SerializeField]
     private Image _summonerSpell001 = null;
@@ -94,6 +96,7 @@ public class SummonerDropdown : MonoBehaviour
             _championIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetChampionIcon(_dropdown.options[_dropdown.value].text);
             _ranlIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetRankIcon(_dropdown.options[_dropdown.value].text);
             _rankText.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankText(_dropdown.options[_dropdown.value].text);
+            _rankWinRate.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankWinRate(_dropdown.options[_dropdown.value].text);
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {

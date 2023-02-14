@@ -41,7 +41,7 @@ public class RequestLeageAPI : MonoBehaviour
                 if (puuid == LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid)
                 {
                     LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO = response;
-                    Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs.Count);
+                    //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs.Count);
                 }
             }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DevelopmentData : MonoBehaviour
 {
-    private string _developmentAPIKey = "RGAPI-8c89203d-e531-4b85-b00d-1d784c0c60e2";
+    private string _developmentAPIKey = "RGAPI-0e8fab96-cbad-4101-921d-95075838fa02";
     public string DevelopmentAPIKey
     {
         get { return _developmentAPIKey; }
