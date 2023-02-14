@@ -29,6 +29,7 @@ public class RequestMatchIDAPI : MonoBehaviour
             }
 
             string str = webRequest.downloadHandler.text.Replace("[", "{\"matchIDs\":[").Replace("]", "]}");
+            //Debug.Log(str);
             MatchIDDTO response = JsonUtility.FromJson<MatchIDDTO>(str);
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
@@ -41,7 +42,7 @@ public class RequestMatchIDAPI : MonoBehaviour
             }
 
             LOM.Instance.LiveGameManager.IsMatchIDRequest = true;
-            Debug.Log("マッチID取得完了");
+            //Debug.Log("マッチID取得完了");
           
             yield return null;
         }

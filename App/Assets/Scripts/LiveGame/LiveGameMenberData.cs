@@ -21,5 +21,5 @@ public class LiveGameMenberData
     public int Kill;
     public int Death;
     public int Assist;
-    public LeagueEntryDTO LeagueEntryDTO;
+    public Test LeagueEntryDTO;
 }

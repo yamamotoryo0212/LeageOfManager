@@ -17,6 +17,8 @@ public class SummonerDropdown : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _kdaText = null;
     [SerializeField]
+    private TextMeshProUGUI _rankText = null;
+    [SerializeField]
     private Image _backGround = null;
     [SerializeField]
     private Image _summonerSpell001 = null;
@@ -30,6 +32,8 @@ public class SummonerDropdown : MonoBehaviour
     private Image _subRuneBackGround = null;
     [SerializeField]
     private Image _championIcon = null;
+    [SerializeField]
+    private Image _ranlIcon = null;
 
     private bool _isSet = false;
     private float _currentTime = 0f;
@@ -41,7 +45,7 @@ public class SummonerDropdown : MonoBehaviour
         {
             if (!LOM.Instance.LiveGameManager.IsMatchIDRequest) return;
 
-            if (LOM.Instance.LiveGameManager.IsMatchIDRequest && !_isSet)
+            if (LOM.Instance.LiveGameManager.IsMatchIDRequest && !_isSet && LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count == 10)
             {
                 _isSet = true;
 
@@ -88,6 +92,8 @@ public class SummonerDropdown : MonoBehaviour
             _mainRuneBackGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetMainRuneBackGround(_dropdown.options[_dropdown.value].text);
             _subRuneBackGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSubRuneBackGround(_dropdown.options[_dropdown.value].text);
             _championIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetChampionIcon(_dropdown.options[_dropdown.value].text);
+            _ranlIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetRankIcon(_dropdown.options[_dropdown.value].text);
+            _rankText.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankText(_dropdown.options[_dropdown.value].text);
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {

@@ -35,8 +35,7 @@ public class RequestSpectatorAPI : MonoBehaviour
             //LOM.Instance.LiveGameManager.RequestMatchIDURL = $"https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/{LOM.Instance.UserData.Puuid}/ids?start=0&count={LOM.Instance.LiveGameManager.MatchCount}&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
 
             DelayMatch(response);
-
-            //LOM.Instance.LiveGameManager.IsSpectatorRequest = true;
+            LOM.Instance.LiveGameManager.IsSpectatorRequest = true;
             yield return null;
         }
     }

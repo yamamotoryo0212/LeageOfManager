@@ -27,17 +27,21 @@ public class RequestLeageAPI : MonoBehaviour
                 }
                 yield break;
             }
+            if (webRequest.downloadHandler.text == "[]")
+            {
+                yield return null;
+            }
 
-            string str = webRequest.downloadHandler.text.Replace("[","").Replace("]","");
+            string pass = webRequest.downloadHandler.text.Replace("[", "{\"leagueEntryDTOs\":[").Replace("]", "]}");
+            Test response = JsonUtility.FromJson<Test>(pass);
 
-            LeagueEntryDTO response = JsonUtility.FromJson<LeagueEntryDTO>(str);
             //Debug.Log(response);
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {
                 if (puuid == LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].Puuid)
                 {
                     LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO = response;
-                    Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.tier);
+                    Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs.Count);
                 }
             }
 

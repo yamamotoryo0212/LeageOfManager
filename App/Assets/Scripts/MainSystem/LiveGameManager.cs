@@ -22,7 +22,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "つぐちゃん";
+    private string _gameName = "とおこ";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -168,7 +168,7 @@ public class LiveGameManager : MonoBehaviour
             {
                 if (_requestSpectatorURL == null) return;
 
-                _isSpectatorRequest = true;
+                
                 StartCoroutine(_requestSpectatorAPI.GetRequest(_requestSpectatorURL));
             }
 

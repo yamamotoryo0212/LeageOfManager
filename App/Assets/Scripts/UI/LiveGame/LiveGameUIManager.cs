@@ -142,6 +142,35 @@ public class LiveGameUIManager : MonoBehaviour
         return name;
     }
 
+    public string SetRankText(string summonerName)
+    {
+        string tier = "unrenk";
+        string rank = "unrank";
+        string lp = "?";
+        string str = "unrank";
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return rank;
+
+                foreach (var item in LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs)
+                {
+                    if (item.queueType == "RANKED_SOLO_5x5")
+                    {
+                        tier = LOM.Instance.RiotIDDataManager.RankTierID[item.tier];
+                        rank = item.rank;
+                        lp = item.leaguePoints.ToString();
+
+                        str = tier + rank + "\n" + lp + "LP";
+                    }
+                }
+            }
+        }
+        return str;
+    }
+
     public List<Sprite> SetPerks(string summonerName)
     {
         List<Sprite> sprite = new List<Sprite>();
@@ -203,6 +232,26 @@ public class LiveGameUIManager : MonoBehaviour
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
                 //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
                 sprite = (Sprite)Resources.Load($"Icon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}", typeof(Sprite));
+            }
+        }
+        return sprite;
+    }
+
+    public Sprite SetRankIcon(string summonerName)
+    {
+        Sprite sprite = Resources.Load<Sprite>("RankEmblem/9999");
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs.Count == 0)
+                {
+                    return sprite;
+                }
+                //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
+                sprite = (Sprite)Resources.Load($"RankEmblem/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs[0].tier}", typeof(Sprite));
             }
         }
         return sprite;
