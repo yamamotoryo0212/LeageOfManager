@@ -97,6 +97,8 @@ public class SummonerDropdown : MonoBehaviour
             _ranlIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetRankIcon(_dropdown.options[_dropdown.value].text);
             _rankText.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankText(_dropdown.options[_dropdown.value].text);
             _rankWinRate.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankWinRate(_dropdown.options[_dropdown.value].text);
+            LOM.Instance.LiveGameManager.IsMatchRequest = true; 
+
 
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
             {

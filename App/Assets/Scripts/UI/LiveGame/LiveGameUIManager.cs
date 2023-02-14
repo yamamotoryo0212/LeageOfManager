@@ -6,9 +6,21 @@ using TMPro;
 
 public class LiveGameUIManager : MonoBehaviour
 {
+    [SerializeField]
+    private RawImage _LoadingWindow = null;
+
+    private bool _isLoad = false;
+    private void Awake()
+    {
+        _LoadingWindow.gameObject.SetActive(true);
+    }
     private void Update()
     {
-
+        if (LOM.Instance.LiveGameManager.IsMatchRequest && !_isLoad)
+        {
+            _LoadingWindow.gameObject.SetActive(false);
+            _isLoad = true;
+        }
     }
 
     public void SetMatchHistory(int dropDownValue)
