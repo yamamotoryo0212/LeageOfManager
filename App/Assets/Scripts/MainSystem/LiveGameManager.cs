@@ -94,6 +94,14 @@ public class LiveGameManager : MonoBehaviour
         }
     }
     private int _matchCount = 10;
+
+
+    private bool _isSearch = false;
+    public bool IsSearch
+    {
+        get { return _isSearch; }
+        set { _isSearch = value; }
+    }
     public int MatchCount
     {
         get { return _matchCount; }
@@ -153,6 +161,11 @@ public class LiveGameManager : MonoBehaviour
         _currentTime += Time.deltaTime;
         if (_currentTime > 1)
         {
+            if (!_isSearch)
+            {
+                return;
+            }
+
             if (!_isAccountRequest)
             {
                 StartCoroutine(_requestAccountAPI.GetRequest(_requestAccountURL));
@@ -212,5 +225,14 @@ public class LiveGameManager : MonoBehaviour
     public void SetMatchData(string pass, string puuid)
     {
         StartCoroutine(_requestMatchAPI.GetRequest(pass, puuid));
+    }
+
+    public void SetSummonerName(string gameName)
+    {
+        _gameName = gameName;
+    }
+    public void SetTagLine(string tagLine)
+    {
+        _tagLine = tagLine;
     }
 }
