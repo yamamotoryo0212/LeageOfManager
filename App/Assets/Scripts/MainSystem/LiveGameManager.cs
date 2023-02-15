@@ -151,10 +151,6 @@ public class LiveGameManager : MonoBehaviour
     }
 
     private float _currentTime = 0f;
-    private void Awake()
-    {
-        
-    }
 
     private void Update()
     {

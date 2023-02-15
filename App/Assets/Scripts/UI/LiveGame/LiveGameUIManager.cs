@@ -10,17 +10,47 @@ public class LiveGameUIManager : MonoBehaviour
     private RawImage _LoadingWindow = null;
 
     private bool _isLoad = false;
-    private void Awake()
-    {
-        _LoadingWindow.gameObject.SetActive(true);
-    }
+    private bool _isSearchWindow = false;
     private void Update()
     {
+        if (LOM.Instance.LiveGameManager.IsSearch && !_isSearchWindow)
+        {
+            _LoadingWindow.gameObject.SetActive(true);
+            _isSearchWindow = true;
+        }
         if (LOM.Instance.LiveGameManager.IsMatchRequest && !_isLoad)
         {
-            _LoadingWindow.gameObject.SetActive(false);
+            _LoadingWindow.gameObject.SetActive(true);
+            StartCoroutine(FadeIn(_LoadingWindow));
             _isLoad = true;
         }
+    }
+
+    IEnumerator FadeIn(RawImage rawImage)
+    {
+
+        rawImage.gameObject.SetActive(true); // 画像をアクティブにする
+
+        Color c = rawImage.color;
+        c.a = 1f;
+        rawImage.color = c;
+
+        while (true)
+        {
+            yield return null;
+            c.a -= 0.02f;
+            rawImage.color = c; // 画像の不透明度を下げる
+
+            if (c.a <= 0f) // 不透明度が0以下のとき
+            {
+                c.a = 0f;
+                rawImage.color = c; // 不透明度を0
+                break; // 繰り返し終了
+            }
+        }
+
+        rawImage.gameObject.SetActive(false); // 画像を非アクティブにする
+
     }
 
     public void SetMatchHistory(int dropDownValue)
