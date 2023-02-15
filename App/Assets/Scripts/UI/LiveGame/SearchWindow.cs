@@ -22,6 +22,7 @@ public class SearchWindow : MonoBehaviour
 
     public void StartSearch()
     {
+        Debug.Log("aaa");
         LOM.Instance.LiveGameManager.SetSummonerName(_summonerField.text);
         LOM.Instance.LiveGameManager.SetTagLine(_tagLineField.text);
         LOM.Instance.LiveGameManager.IsSearch = true;

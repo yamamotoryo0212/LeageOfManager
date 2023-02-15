@@ -22,7 +22,7 @@ public class LiveGameManager : MonoBehaviour
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
-    private string _gameName = "過負荷JG";
+    private string _gameName = "";
     private string _requestAccountURL = null;
 
     [Header("サモナーリクエスト")]
@@ -153,7 +153,7 @@ public class LiveGameManager : MonoBehaviour
     private float _currentTime = 0f;
     private void Awake()
     {
-        _requestAccountURL = $"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{_gameName}/{_tagLine}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";       
+        
     }
 
     private void Update()
@@ -168,6 +168,7 @@ public class LiveGameManager : MonoBehaviour
 
             if (!_isAccountRequest)
             {
+                _requestAccountURL = $"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{_gameName}/{_tagLine}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
                 StartCoroutine(_requestAccountAPI.GetRequest(_requestAccountURL));
             }
 
