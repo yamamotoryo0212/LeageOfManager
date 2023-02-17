@@ -96,6 +96,24 @@ public class LiveGameManager : MonoBehaviour
     private int _matchCount = 10;
 
 
+    public void ResetButton( GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+        LOM.Instance.UIManager.LiveGameUIManager.SummonerDropdown.IsSet = false;
+        LOM.Instance.UIManager.LiveGameUIManager.LoadingWindow.gameObject.SetActive(true);
+        LOM.Instance.UIManager.LiveGameUIManager.IsLoad = false;
+        LOM.Instance.UIManager.LiveGameUIManager.IsSearchWindow = false;
+        _liveGameMenberDatas = new List<LiveGameMenberData>();
+        _isSearch = false;
+        _isAccountRequest = false;
+        _isMatchIDRequest = false;
+        _isMatchRequest = false;
+        _isMatchSummoner = false;
+        _isSpectatorRequest = false;
+        _isSummonerRequest = false;
+        _requestSpectatorURL = null;
+    }
+
     private bool _isSearch = false;
     public bool IsSearch
     {
@@ -232,4 +250,5 @@ public class LiveGameManager : MonoBehaviour
     {
         _tagLine = tagLine;
     }
+
 }

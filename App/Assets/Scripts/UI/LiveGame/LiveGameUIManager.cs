@@ -7,21 +7,53 @@ using TMPro;
 public class LiveGameUIManager : MonoBehaviour
 {
     [SerializeField]
-    private RawImage _LoadingWindow = null;
+    private SummonerDropdown _summonerDropdown = null;
+    public SummonerDropdown SummonerDropdown
+    {
+        get { return _summonerDropdown; }
+    }
+
+    [SerializeField]
+    private RawImage _loadingWindow = null;
+    public RawImage LoadingWindow
+    {
+        get { return _loadingWindow; }
+    }
+
+    [SerializeField]
+    private Button _homeButton = null;
+    [SerializeField]
+    private Image _searchWindow = null;
 
     private bool _isLoad = false;
+    public bool IsLoad
+    {
+        get { return _isLoad; }
+        set { _isLoad = value; }
+    }
     private bool _isSearchWindow = false;
+    public bool IsSearchWindow
+    {
+        get { return _isSearchWindow; }
+        set { _isSearchWindow = value; }
+    }
+
+    private void Awake()
+    {
+        _homeButton.onClick.AddListener(() => LOM.Instance.LiveGameManager.ResetButton(_searchWindow.gameObject));
+    }
+
     private void Update()
     {
         if (LOM.Instance.LiveGameManager.IsSearch && !_isSearchWindow)
         {
-            _LoadingWindow.gameObject.SetActive(true);
+            _loadingWindow.gameObject.SetActive(true);
             _isSearchWindow = true;
         }
         if (LOM.Instance.LiveGameManager.IsMatchRequest && !_isLoad)
         {
-            _LoadingWindow.gameObject.SetActive(true);
-            StartCoroutine(FadeIn(_LoadingWindow));
+            _loadingWindow.gameObject.SetActive(true);
+            StartCoroutine(FadeIn(_loadingWindow));
             _isLoad = true;
         }
     }
