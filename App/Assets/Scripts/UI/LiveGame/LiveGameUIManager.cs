@@ -41,6 +41,7 @@ public class LiveGameUIManager : MonoBehaviour
     private void Awake()
     {
         _homeButton.onClick.AddListener(() => LOM.Instance.LiveGameManager.ResetButton(_searchWindow.gameObject));
+        _homeButton.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -53,6 +54,7 @@ public class LiveGameUIManager : MonoBehaviour
         if (LOM.Instance.LiveGameManager.IsMatchRequest && !_isLoad)
         {
             _loadingWindow.gameObject.SetActive(true);
+            _homeButton.gameObject.SetActive(true);
             StartCoroutine(FadeIn(_loadingWindow));
             _isLoad = true;
         }
@@ -90,6 +92,7 @@ public class LiveGameUIManager : MonoBehaviour
         Color color = _loadingWindow.color;
         color.a = 100;
         _loadingWindow.gameObject.SetActive(true);
+        _homeButton.gameObject.SetActive(false);
         _loadingWindow.color = color;
     }
 
