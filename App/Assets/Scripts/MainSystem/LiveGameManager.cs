@@ -100,7 +100,7 @@ public class LiveGameManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         LOM.Instance.UIManager.LiveGameUIManager.SummonerDropdown.IsSet = false;
-        LOM.Instance.UIManager.LiveGameUIManager.LoadingWindow.gameObject.SetActive(true);
+        LOM.Instance.UIManager.LiveGameUIManager.ResetWindow();
         LOM.Instance.UIManager.LiveGameUIManager.IsLoad = false;
         LOM.Instance.UIManager.LiveGameUIManager.IsSearchWindow = false;
         _liveGameMenberDatas = new List<LiveGameMenberData>();

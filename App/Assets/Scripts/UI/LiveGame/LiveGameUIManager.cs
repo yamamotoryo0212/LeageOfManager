@@ -58,7 +58,7 @@ public class LiveGameUIManager : MonoBehaviour
         }
     }
 
-    IEnumerator FadeIn(RawImage rawImage)
+    private IEnumerator FadeIn(RawImage rawImage)
     {
 
         rawImage.gameObject.SetActive(true); // 画像をアクティブにする
@@ -83,6 +83,14 @@ public class LiveGameUIManager : MonoBehaviour
 
         rawImage.gameObject.SetActive(false); // 画像を非アクティブにする
 
+    }
+
+    public void ResetWindow()
+    {
+        Color color = _loadingWindow.color;
+        color.a = 100;
+        _loadingWindow.gameObject.SetActive(true);
+        _loadingWindow.color = color;
     }
 
     public void SetMatchHistory(int dropDownValue)
