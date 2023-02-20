@@ -9,7 +9,8 @@ public class SaveDataManager : MonoBehaviour
     private string _datapath = null;
     private void Awake()
     {
-        _datapath = Application.dataPath + "/JSON/SaveData.json";
+        _datapath = Application.persistentDataPath + "SaveData.json";
+        Debug.Log(Application.persistentDataPath + "SaveData.json");
     }
 
     public void Save(SaveData saveData)
@@ -23,14 +24,17 @@ public class SaveDataManager : MonoBehaviour
 
     public SaveData Load()
     {
-        if (new StreamReader(_datapath) == null)
+        try
+        {
+            StreamReader reader = new StreamReader(_datapath);
+            string datastr = reader.ReadToEnd();
+            reader.Close();
+            return JsonUtility.FromJson<SaveData>(datastr);
+        }
+        catch
         {
             return null;
         }
-        StreamReader reader = new StreamReader(_datapath);
-        string datastr = reader.ReadToEnd();
-        reader.Close();
-        return JsonUtility.FromJson<SaveData>(datastr);
     }
 }
 
