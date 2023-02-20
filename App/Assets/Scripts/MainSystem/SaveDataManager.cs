@@ -23,6 +23,10 @@ public class SaveDataManager : MonoBehaviour
 
     public SaveData Load()
     {
+        if (new StreamReader(_datapath) == null)
+        {
+            return null;
+        }
         StreamReader reader = new StreamReader(_datapath);
         string datastr = reader.ReadToEnd();
         reader.Close();
