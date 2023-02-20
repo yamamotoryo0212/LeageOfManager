@@ -76,6 +76,7 @@ Transform:
   - {fileID: 6452611469643498416}
   - {fileID: 4536560802426202718}
   - {fileID: 4116634735239349548}
+  - {fileID: 3175675738494728206}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,6 +97,7 @@ MonoBehaviour:
   _liveGameManager: {fileID: 8543161400666835997}
   _uIManager: {fileID: 8440526410408942078}
   _riotIDDataManager: {fileID: 841943337495841336}
+  _saveData: {fileID: 2631804363162038752}
 --- !u!1 &1659138751251407530
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +270,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc330e62a08fa8a41b4770b60ef1abaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2664766916817230688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3175675738494728206}
+  - component: {fileID: 2631804363162038752}
+  m_Layer: 0
+  m_Name: SaveData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3175675738494728206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664766916817230688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2835001304396016606}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2631804363162038752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664766916817230688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc57bdc8c48ba3489bb471cde40ec8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SummonerName: 
 --- !u!1 &2778940691798395345
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32421d5d51f5b24b981e1b44cb2f424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _summonerDropdown: {fileID: 0}
+  _loadingWindow: {fileID: 0}
+  _homeButton: {fileID: 0}
+  _searchWindow: {fileID: 0}
 --- !u!1 &3113787660368869156
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +410,8 @@ MonoBehaviour:
   _summonerName: {fileID: 0}
   _summonerLevel: {fileID: 0}
   _kdaText: {fileID: 0}
+  _rankText: {fileID: 0}
+  _rankWinRate: {fileID: 0}
   _backGround: {fileID: 0}
   _summonerSpell001: {fileID: 0}
   _summonerSpell002: {fileID: 0}
@@ -367,6 +419,7 @@ MonoBehaviour:
   _mainRuneBackGround: {fileID: 0}
   _subRuneBackGround: {fileID: 0}
   _championIcon: {fileID: 0}
+  _ranlIcon: {fileID: 0}
 --- !u!1 &3533999769838680263
 GameObject:
   m_ObjectHideFlags: 0
