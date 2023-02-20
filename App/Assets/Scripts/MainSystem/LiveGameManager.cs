@@ -96,9 +96,9 @@ public class LiveGameManager : MonoBehaviour
     private int _matchCount = 10;
 
 
-    public void ResetButton( GameObject gameObject)
+    public void ResetButton()
     {
-        gameObject.SetActive(true);
+        LOM.Instance.UIManager.LiveGameUIManager.SearchWindow.gameObject.SetActive(true);
         LOM.Instance.UIManager.LiveGameUIManager.SummonerDropdown.IsSet = false;
         LOM.Instance.UIManager.LiveGameUIManager.ResetWindow();
         LOM.Instance.UIManager.LiveGameUIManager.IsLoad = false;

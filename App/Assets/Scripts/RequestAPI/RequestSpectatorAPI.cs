@@ -22,6 +22,7 @@ public class RequestSpectatorAPI : MonoBehaviour
                         break;
                     case UnityWebRequest.Result.ProtocolError:
                         Debug.LogError("HTTP Error: " + webRequest.error);
+                        LOM.Instance.LiveGameManager.ResetButton();
                         break;
                     default:
                         break;

@@ -24,7 +24,10 @@ public class LiveGameUIManager : MonoBehaviour
     private Button _homeButton = null;
     [SerializeField]
     private Image _searchWindow = null;
-
+    public Image SearchWindow
+    {
+        get { return _searchWindow; }
+    }
     private bool _isLoad = false;
     public bool IsLoad
     {
@@ -40,7 +43,7 @@ public class LiveGameUIManager : MonoBehaviour
 
     private void Awake()
     {
-        _homeButton.onClick.AddListener(() => LOM.Instance.LiveGameManager.ResetButton(_searchWindow.gameObject));
+        _homeButton.onClick.AddListener(() => LOM.Instance.LiveGameManager.ResetButton());
         _homeButton.gameObject.SetActive(false);
     }
 
