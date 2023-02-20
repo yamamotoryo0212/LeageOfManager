@@ -35,4 +35,5 @@ public class SaveDataManager : MonoBehaviour
 public class SaveData
 {
     public string SummonerName;
+    public string TagLine;
 }

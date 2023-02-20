@@ -26,8 +26,7 @@ public class SearchWindow : MonoBehaviour
         gameObject.SetActive(true);
         _saveData = new SaveData();
         _summonerField.onValueChanged.AddListener((value) => NameChange(value));
-
-       
+        _tagLineField.onValueChanged.AddListener((value) => TagNameChange(value));
     }
 
     public void StartSearch()
@@ -49,7 +48,6 @@ public class SearchWindow : MonoBehaviour
         }
         else
         {
-
             _saveData.SummonerName = null;
             LOM.Instance.SaveData.Save(_saveData);
         }
@@ -64,6 +62,10 @@ public class SearchWindow : MonoBehaviour
     {
         _saveData.SummonerName = name;
     }
+    public void TagNameChange(string tagLine)
+    {
+        _saveData.TagLine = tagLine;
+    }
 
     private void OnEnable()
     {
@@ -71,6 +73,7 @@ public class SearchWindow : MonoBehaviour
         if (!(LOM.Instance.SaveData.Load().SummonerName == null))
         {
             _summonerField.text = LOM.Instance.SaveData.Load().SummonerName;
+            _tagLineField.text = LOM.Instance.SaveData.Load().TagLine;
         }
     }
 }
