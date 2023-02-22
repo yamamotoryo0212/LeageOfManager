@@ -6,34 +6,46 @@ using System.IO;
 
 public class SaveDataManager : MonoBehaviour
 {
-    private string _datapath = null;
-    private void Awake()
+    private string _summonerpath = null;
+    public string Summonerpath
     {
-        _datapath = Application.persistentDataPath + "SaveData.json";
-        Debug.Log(Application.persistentDataPath + "SaveData.json");
+        get { return _summonerpath; }
     }
 
-    public void Save(SaveData saveData)
+    private string _developPath = null;
+    public string DevelopPath
     {
-        string jsonData = JsonUtility.ToJson(saveData);
-        StreamWriter writer = new StreamWriter(_datapath, false);
+        get { return _developPath; }
+    }
+
+    private void Awake()
+    {
+        _summonerpath = Application.persistentDataPath + "SaveData.json";
+        _developPath = Application.persistentDataPath + "DevelopData.json";
+    }
+
+    public T Save<T>(T dataType,string path)
+    {
+        string jsonData = JsonUtility.ToJson(dataType);
+        StreamWriter writer = new StreamWriter(path, false);
         writer.WriteLine(jsonData);
         writer.Flush();
         writer.Close();
+        return default;
     }
 
-    public SaveData Load()
+    public T Load<T>(string path)
     {
         try
         {
-            StreamReader reader = new StreamReader(_datapath);
+            StreamReader reader = new StreamReader(path);
             string datastr = reader.ReadToEnd();
             reader.Close();
-            return JsonUtility.FromJson<SaveData>(datastr);
+            return JsonUtility.FromJson<T>(datastr);
         }
         catch
         {
-            return null;
+            return default;
         }
     }
 }
@@ -44,4 +56,10 @@ public class SaveData
 {
     public string SummonerName;
     public string TagLine;
+}
+
+[Serializable]
+public class DevelopData
+{
+    public string APIKey;
 }

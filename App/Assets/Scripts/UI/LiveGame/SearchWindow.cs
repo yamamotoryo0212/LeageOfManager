@@ -29,16 +29,14 @@ public class SearchWindow : MonoBehaviour
 
     private void Start()
     {
-        if (LOM.Instance.SaveData.Load() == null)
-        {
-            Debug.Log("Not Load");
+        if (LOM.Instance.SaveData.Load<SaveData>(LOM.Instance.SaveData.Summonerpath) == null)
+        {         
             return;
         }
         else
         {
-            Debug.Log("Load");
-            _summonerField.text = LOM.Instance.SaveData.Load().SummonerName;
-            _tagLineField.text = LOM.Instance.SaveData.Load().TagLine;
+            _summonerField.text = LOM.Instance.SaveData.Load<SaveData>(LOM.Instance.SaveData.Summonerpath).SummonerName;
+            _tagLineField.text = LOM.Instance.SaveData.Load<SaveData>(LOM.Instance.SaveData.Summonerpath).TagLine;
         }
     }
 
@@ -59,12 +57,12 @@ public class SearchWindow : MonoBehaviour
         {
             _saveData.TagLine = _tagLineField.text;
             _saveData.SummonerName = _summonerField.text;
-            LOM.Instance.SaveData.Save(_saveData);
+            LOM.Instance.SaveData.Save(_saveData, LOM.Instance.SaveData.Summonerpath);
         }
         else
         {
             _saveData.SummonerName = null;
-            LOM.Instance.SaveData.Save(_saveData);
+            LOM.Instance.SaveData.Save(_saveData,LOM.Instance.SaveData.Summonerpath);
         }
 
         LOM.Instance.LiveGameManager.SetSummonerName(_summonerField.text);
@@ -76,16 +74,14 @@ public class SearchWindow : MonoBehaviour
     private void OnEnable()
     {
         _summonerField.text = null;
-        if (LOM.Instance.SaveData.Load() == null)
+        if (LOM.Instance.SaveData.Load<SaveData>(LOM.Instance.SaveData.Summonerpath) == null)
         {
-            Debug.Log("Not Load");
             return;
         }
         else
         {
-            Debug.Log("Load");
-            _summonerField.text = LOM.Instance.SaveData.Load().SummonerName;
-            _tagLineField.text = LOM.Instance.SaveData.Load().TagLine;
+            _summonerField.text = LOM.Instance.SaveData.Load<SaveData>(LOM.Instance.SaveData.Summonerpath).SummonerName;
+            _tagLineField.text = LOM.Instance.SaveData.Load<SaveData>(LOM.Instance.SaveData.Summonerpath).TagLine;
         }
     }
 }

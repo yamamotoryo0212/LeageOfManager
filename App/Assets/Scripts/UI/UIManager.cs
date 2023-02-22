@@ -22,9 +22,9 @@ public class UIManager : MonoBehaviour
 
     private bool _ismenuEndPos = true;
     private bool _ismenuStartPos = true;
-    private int _menuStartPos = -250;
-    private int _menuEndPos = 150;
-    private int _menuAnimSpeed = 60;
+    private int _menuStartPos = -100;
+    private int _menuEndPos = 100;
+    private int _menuAnimSpeed = 50;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
         _closeWindow.onClick.AddListener(() => StartCoroutine(MenuWindowCloseAnim()));
     }
 
-    private IEnumerator MenuWindowOpenAnim()
+    public IEnumerator MenuWindowOpenAnim()
     {
         while (_ismenuEndPos)
         {
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private IEnumerator MenuWindowCloseAnim()
+    public IEnumerator MenuWindowCloseAnim()
     {
         while (_ismenuStartPos)
         {
