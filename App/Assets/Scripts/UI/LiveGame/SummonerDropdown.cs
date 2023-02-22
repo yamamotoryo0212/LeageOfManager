@@ -36,6 +36,8 @@ public class SummonerDropdown : MonoBehaviour
     private Image _championIcon = null;
     [SerializeField]
     private Image _ranlIcon = null;
+    [SerializeField]
+    private Image _favoriteChampionIcon = null;
 
     private bool _isSet = false;
     public bool IsSet
@@ -103,6 +105,7 @@ public class SummonerDropdown : MonoBehaviour
         _mainRuneBackGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetMainRuneBackGround(_dropdown.options[_dropdown.value].text);
         _subRuneBackGround.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSubRuneBackGround(_dropdown.options[_dropdown.value].text);
         _championIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetChampionIcon(_dropdown.options[_dropdown.value].text);
+        _favoriteChampionIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetFavoriteChampionIcon(_dropdown.options[_dropdown.value].text);
         _ranlIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetRankIcon(_dropdown.options[_dropdown.value].text);
         _rankText.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankText(_dropdown.options[_dropdown.value].text);
         _rankWinRate.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankWinRate(_dropdown.options[_dropdown.value].text);

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class RequestAccountAPI : MonoBehaviour
+public class RequestChampionMasteryAPI : MonoBehaviour
 {
-    public IEnumerator GetRequest(string uri)
+    public IEnumerator GetRequest(string uri, string puuid)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -24,7 +24,7 @@ public class RequestAccountAPI : MonoBehaviour
                         if (!(webRequest.error == "HTTP/1.1 503 Service Unavailable"))
                         {
                             LOM.Instance.LiveGameManager.ResetButton();
-                        }                        
+                        }
                         break;
                     default:
                         break;
@@ -32,13 +32,16 @@ public class RequestAccountAPI : MonoBehaviour
                 yield break;
             }
 
-            AccountDto response = JsonUtility.FromJson<AccountDto>(webRequest.downloadHandler.text);
-            Debug.Log(response.puuid);
+            string str = webRequest.downloadHandler.text.Replace("[", "").Replace("]", "");
+            ChampionMasteryDto response = JsonUtility.FromJson<ChampionMasteryDto>(str);
 
-            LOM.Instance.UserData.SetPuuid(response.puuid);
-            LOM.Instance.LiveGameManager.RequestSummonerURL = $"https://jp1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{LOM.Instance.UserData.Puuid}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
-
-            LOM.Instance.LiveGameManager.IsAccountRequest = true;
+            foreach (var item in LOM.Instance.LiveGameManager.LiveGameMenberDatas)
+            {
+                if (item.Puuid == puuid)
+                {
+                    item.FavoriteChampion = response.championId;
+                }
+            }
 
             yield return null;
         }

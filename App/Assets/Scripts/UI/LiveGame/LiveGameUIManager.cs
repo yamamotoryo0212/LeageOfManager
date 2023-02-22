@@ -43,8 +43,8 @@ public class LiveGameUIManager : MonoBehaviour
 
     private void Awake()
     {
-        _homeButton.onClick.AddListener(() => LOM.Instance.LiveGameManager.ResetButton());
-        _homeButton.gameObject.SetActive(false);
+        // _homeButton.onClick.AddListener(() => LOM.Instance.LiveGameManager.ResetButton());
+        //_homeButton.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -101,6 +101,7 @@ public class LiveGameUIManager : MonoBehaviour
 
     public void SetMatchHistory(int dropDownValue)
     {
+        bool once = false;
         if (!LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].IsMatchHistory)
         {
             for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].MatchIDs.Count; i++)
@@ -112,6 +113,12 @@ public class LiveGameUIManager : MonoBehaviour
                 LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].IsMatchHistory = true;
                 string pass = $"https://asia.api.riotgames.com/lol/match/v5/matches/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].MatchIDs[i]}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
                 LOM.Instance.LiveGameManager.SetMatchData(pass, LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].Puuid);
+                if (!once)
+                {
+                    string pass_ = $"https://jp1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].SummonerID}/top?count=1&api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
+                    LOM.Instance.LiveGameManager.SetChampionMastery(pass_, LOM.Instance.LiveGameManager.LiveGameMenberDatas[dropDownValue].Puuid);
+                    once = true;
+                }                
             }
         }
     }
@@ -341,6 +348,22 @@ public class LiveGameUIManager : MonoBehaviour
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
                 //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
                 sprite = (Sprite)Resources.Load($"Icon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId}", typeof(Sprite));
+            }
+        }
+        return sprite;
+    }
+
+    public Sprite SetFavoriteChampionIcon(string summonerName)
+    {
+        Sprite sprite = Resources.Load<Sprite>("Icon/9999");
+
+        for (int i = 0; i < LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count; i++)
+        {
+            if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
+            {
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
+                //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
+                sprite = (Sprite)Resources.Load($"Icon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].FavoriteChampion}", typeof(Sprite));
             }
         }
         return sprite;

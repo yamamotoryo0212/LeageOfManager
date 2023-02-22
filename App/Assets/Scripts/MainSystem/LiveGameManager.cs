@@ -19,6 +19,8 @@ public class LiveGameManager : MonoBehaviour
     private RequestMatchAPI _requestMatchAPI = null;
     [SerializeField]
     private RequestLeageAPI _requestLeageAPI = null;
+    [SerializeField]
+    private RequestChampionMasteryAPI _requestChampionMasteryAPI = null;
 
     [Header("アカウントリクエスト")]
     private string _tagLine = "JP1";
@@ -239,8 +241,13 @@ public class LiveGameManager : MonoBehaviour
 
     public void SetMatchData(string pass, string puuid)
     {
-        StartCoroutine(_requestMatchAPI.GetRequest(pass, puuid));
+        StartCoroutine(_requestMatchAPI.GetRequest(pass, puuid));        
     }
+
+    public void SetChampionMastery(string pass, string puuid)
+    {
+        StartCoroutine(_requestChampionMasteryAPI.GetRequest(pass, puuid));
+    }        
 
     public void SetSummonerName(string gameName)
     {
