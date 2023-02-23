@@ -20,9 +20,7 @@ public class MenuWindow : MonoBehaviour
 
     private void OpenDebugWindow()
     {
-        Debug.Log("on");
         _debugManager.gameObject.SetActive(true);
-        Debug.Log(_debugManager.gameObject.activeSelf);
         StartCoroutine(LOM.Instance.UIManager.MenuWindowCloseAnim());
     }
     private void OpenLiveGameWindow()
