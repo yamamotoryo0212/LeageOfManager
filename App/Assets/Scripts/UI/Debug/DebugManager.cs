@@ -21,7 +21,6 @@ public class DebugManager : MonoBehaviour
     {
         _developData = new DevelopData();
         Application.logMessageReceived += LoggedCb;
-        gameObject.SetActive(false);
         _registerButton.onClick.AddListener(() => RegisterAPIKey());
     }
 
