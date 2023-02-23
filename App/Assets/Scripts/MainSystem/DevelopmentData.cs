@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DevelopmentData : MonoBehaviour
 {
-    private string _developmentAPIKey = "RGAPI-e0264ef9-e162-4143-926c-c61c290a1924";
+    private string _developmentAPIKey = "";
     public string DevelopmentAPIKey
     {
         get { return _developmentAPIKey; }
@@ -12,6 +12,7 @@ public class DevelopmentData : MonoBehaviour
 
     private void Awake()
     {
+        LOM.Instance.SaveData.DevelopPath = Application.persistentDataPath + "DevelopData.json";
         try
         {
             _developmentAPIKey = LOM.Instance.SaveData.Load<DevelopData>(LOM.Instance.SaveData.DevelopPath).APIKey;

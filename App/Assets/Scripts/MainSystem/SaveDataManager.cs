@@ -16,6 +16,7 @@ public class SaveDataManager : MonoBehaviour
     public string DevelopPath
     {
         get { return _developPath; }
+        set { _developPath = value; }
     }
 
     private void Awake()
@@ -45,6 +46,7 @@ public class SaveDataManager : MonoBehaviour
         }
         catch
         {
+            Debug.LogWarning("ÉçÅ[Éhé∏îs");
             return default;
         }
     }
