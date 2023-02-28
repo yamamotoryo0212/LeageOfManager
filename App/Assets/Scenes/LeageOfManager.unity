@@ -220,11 +220,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35664377}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -217.16927, y: -257.98132, z: -986.2174}
+  m_LocalPosition: {x: -217.16927, y: -175, z: -986.2174}
   m_LocalScale: {x: 1.4285713, y: 1.4285713, z: 1.4285713}
   m_Children:
   - {fileID: 869145122}
   - {fileID: 507411630}
+  - {fileID: 949585601}
   m_Father: {fileID: 1515979470}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1747,11 +1748,11 @@ RectTransform:
   - {fileID: 99057393}
   - {fileID: 1487315822}
   m_Father: {fileID: 1515979470}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -389}
+  m_AnchoredPosition: {x: 0, y: -330}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &319389567
@@ -4421,16 +4422,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949585600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 690.35223}
+  m_LocalScale: {x: 0.70000005, y: 0.70000005, z: 0.70000005}
   m_Children: []
-  m_Father: {fileID: 1515979470}
-  m_RootOrder: 3
+  m_Father: {fileID: 35664378}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175, y: -118}
+  m_AnchoredPosition: {x: 29.518463, y: 97.98691}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &949585602
@@ -7089,8 +7090,6 @@ RectTransform:
   m_Children:
   - {fileID: 35664378}
   - {fileID: 2044240591}
-  - {fileID: 1686283492}
-  - {fileID: 949585601}
   - {fileID: 319389566}
   - {fileID: 1539538968}
   - {fileID: 1946886969}
@@ -7263,7 +7262,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1515979470}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8320,11 +8319,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686283491}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1515979470}
+  m_Father: {fileID: 2044240591}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9520,7 +9519,7 @@ RectTransform:
   - {fileID: 1531394181}
   - {fileID: 1493330495}
   m_Father: {fileID: 1515979470}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9621,7 +9620,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948919376}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 8f9fb8f974de73b4abb8a5d79f7146b1, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 33ca92802eef82c4dacede3a67ccd87a, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -9634,14 +9633,12 @@ VideoPlayer:
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 1
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
   m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
@@ -10217,6 +10214,7 @@ RectTransform:
   m_Children:
   - {fileID: 1758239068}
   - {fileID: 968966416}
+  - {fileID: 1686283492}
   m_Father: {fileID: 1515979470}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
