@@ -73,6 +73,7 @@ public class RequestMatchAPI : MonoBehaviour
             }
           
             yield return null;
+            LOM.Instance.LiveGameManager.RequestCount++;
         }
     }
 }

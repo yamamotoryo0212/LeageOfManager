@@ -34,6 +34,7 @@ public class RequestSummonerAPI : MonoBehaviour
             LOM.Instance.LiveGameManager.RequestSpectatorURL = $"https://jp1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{LOM.Instance.UserData.SummonerID}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
 
             LOM.Instance.LiveGameManager.IsSummonerRequest = true;
+            LOM.Instance.LiveGameManager.RequestCount++;
             yield return null;
         }
     }

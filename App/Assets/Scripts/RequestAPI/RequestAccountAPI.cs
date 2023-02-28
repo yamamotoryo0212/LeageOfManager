@@ -39,6 +39,7 @@ public class RequestAccountAPI : MonoBehaviour
             LOM.Instance.LiveGameManager.RequestSummonerURL = $"https://jp1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{LOM.Instance.UserData.Puuid}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
 
             LOM.Instance.LiveGameManager.IsAccountRequest = true;
+            LOM.Instance.LiveGameManager.RequestCount++;
 
             yield return null;
         }

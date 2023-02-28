@@ -172,6 +172,22 @@ public class LiveGameManager : MonoBehaviour
 
     private float _currentTime = 0f;
 
+    private int _requestCount = 0;
+    public int RequestCount
+    {
+        get { return _requestCount; }
+        set
+        {
+            if (value <= 0)
+            {
+                Debug.LogWarning("_requestCount‚É0ˆÈ‰º‚Ì’l‚ª“ü‚è‚Ü‚µ‚½");
+            }
+            else
+            {
+                _requestCount = value;
+            }
+        }
+    }
     private void Update()
     {
         _currentTime += Time.deltaTime;

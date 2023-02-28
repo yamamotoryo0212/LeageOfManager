@@ -44,7 +44,8 @@ public class RequestMatchSummonerAPI : MonoBehaviour
             string leagePass = $"https://jp1.api.riotgames.com/lol/league/v4/entries/by-summoner/{response.id}?api_key={LOM.Instance.Mainsystem.DevelopmentAPIKey}";
             LOM.Instance.LiveGameManager.SetMatchIDData(matchPass, response.puuid);
             LOM.Instance.LiveGameManager.SetLeageData(leagePass, response.puuid);
-           yield return null;
+            LOM.Instance.LiveGameManager.RequestCount++;
+            yield return null;
         }
     }
 }

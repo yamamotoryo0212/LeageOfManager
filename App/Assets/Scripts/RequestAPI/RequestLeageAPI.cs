@@ -44,7 +44,7 @@ public class RequestLeageAPI : MonoBehaviour
                     //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].LeagueEntryDTO.leagueEntryDTOs.Count);
                 }
             }
-
+            LOM.Instance.LiveGameManager.RequestCount++;
             yield return null;
         }
     }

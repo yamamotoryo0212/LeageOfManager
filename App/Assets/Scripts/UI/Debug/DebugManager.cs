@@ -14,6 +14,8 @@ public class DebugManager : MonoBehaviour
     private TMP_InputField _developmentAPIKeyField = null;
     [SerializeField]
     private Button _registerButton = null;
+    [SerializeField]
+    private TextMeshProUGUI _requestCount = null;
 
     private DevelopData _developData = null;
 
@@ -22,6 +24,11 @@ public class DebugManager : MonoBehaviour
         _developData = new DevelopData();
         Application.logMessageReceived += LoggedCb;
         _registerButton.onClick.AddListener(() => RegisterAPIKey());
+    }
+
+    private void Update()
+    {
+        _requestCount.text = "現在のリクエスト総数 : " + LOM.Instance.LiveGameManager.RequestCount;
     }
 
     private void LoggedCb(string logstr, string stacktrace, LogType type)

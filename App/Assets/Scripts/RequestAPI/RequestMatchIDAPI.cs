@@ -43,7 +43,7 @@ public class RequestMatchIDAPI : MonoBehaviour
 
             LOM.Instance.LiveGameManager.IsMatchIDRequest = true;
             //Debug.Log("ƒ}ƒbƒ`IDŽæ“¾Š®—¹");
-          
+            LOM.Instance.LiveGameManager.RequestCount++;
             yield return null;
         }
     }

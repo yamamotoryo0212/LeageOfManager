@@ -42,7 +42,7 @@ public class RequestChampionMasteryAPI : MonoBehaviour
                     item.FavoriteChampion = response.championId;
                 }
             }
-
+            LOM.Instance.LiveGameManager.RequestCount++;
             yield return null;
         }
     }
