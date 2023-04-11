@@ -22,5 +22,5 @@ public class LiveGameMenberData
     public int Death;
     public int Assist;
     public Test LeagueEntryDTO;
-    public long FavoriteChampion;
+    public List<long> FavoriteChampion = new List<long>();
 }

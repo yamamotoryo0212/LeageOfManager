@@ -362,8 +362,12 @@ public class LiveGameUIManager : MonoBehaviour
             if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].ChampionID] + ")" == summonerName)
             {
                 if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].MatchDtos.Count == 0) return sprite;
-                //Debug.Log(LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].CurrentGameParticipant.championId);
-                sprite = (Sprite)Resources.Load($"Icon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].FavoriteChampion}", typeof(Sprite));
+                if (LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].FavoriteChampion.Count == 0) return sprite;
+
+                for (int j = 0; j < LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].FavoriteChampion.Count; j++)
+                {
+                    sprite = (Sprite)Resources.Load($"Icon/{LOM.Instance.LiveGameManager.LiveGameMenberDatas[i].FavoriteChampion[j]}", typeof(Sprite));
+                }                
             }
         }
         return sprite;

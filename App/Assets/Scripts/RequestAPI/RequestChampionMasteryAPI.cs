@@ -39,7 +39,7 @@ public class RequestChampionMasteryAPI : MonoBehaviour
             {
                 if (item.Puuid == puuid)
                 {
-                    item.FavoriteChampion = response.championId;
+                    item.FavoriteChampion.Add(response.championId);
                 }
             }
             LOM.Instance.LiveGameManager.RequestCount++;
