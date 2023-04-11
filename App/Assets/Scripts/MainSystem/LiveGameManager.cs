@@ -95,7 +95,7 @@ public class LiveGameManager : MonoBehaviour
             _requestMatchURL = value;
         }
     }
-    private int _matchCount = 10;
+    private int _matchCount = 5;
 
 
     public void ResetButton()
