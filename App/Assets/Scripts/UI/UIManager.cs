@@ -19,10 +19,13 @@ public class UIManager : MonoBehaviour
     private Image _menuWindow = null;
     [SerializeField]
     private Button _closeWindow = null;
+    
+    //各ウィンドウオブジェクトグループ
     [SerializeField]
     private GameObject _liveGameWindow = null;
     [SerializeField]
     private GameObject _allSummonerWindow = null;
+    //各ウィンドウオブジェクトグループ
 
     private bool _ismenuEndPos = true;
     private bool _ismenuStartPos = true;

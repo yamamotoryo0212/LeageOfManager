@@ -1405,6 +1405,7 @@ GameObject:
   - component: {fileID: 6412051706068580909}
   - component: {fileID: 6412051706068580907}
   - component: {fileID: 6412051706068580908}
+  - component: {fileID: 810002747695842561}
   m_Layer: 5
   m_Name: SummonerData
   m_TagString: Untagged
@@ -1479,6 +1480,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &810002747695842561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412051706068580910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40e588263201c14fa389dd32f153c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _summonerName: {fileID: 6412051706493867339}
+  _summonerLevel: {fileID: 6412051704803010156}
+  _championIcon: {fileID: 6412051705181940320}
+  _summonerSpellIcon:
+  - {fileID: 6412051705374236150}
+  - {fileID: 6412051706198894760}
+  _rankIcon: {fileID: 6412051705790501350}
+  _rankText: {fileID: 6412051704892578705}
+  _winRateText: {fileID: 6412051705392576762}
+  _rankWinRateText: {fileID: 6412051705483772548}
+  _kDARateText: {fileID: 6412051705254837632}
+  _favoriteChampionIcon:
+  - {fileID: 6412051706452869317}
+  - {fileID: 6412051705523088326}
+  - {fileID: 6412051705049740532}
+  - {fileID: 6412051705338965309}
 --- !u!1 &6412051706198894762
 GameObject:
   m_ObjectHideFlags: 0
