@@ -19,12 +19,22 @@ public class UIManager : MonoBehaviour
     private Image _menuWindow = null;
     [SerializeField]
     private Button _closeWindow = null;
+    [SerializeField]
+    private GameObject _liveGameWindow = null;
+    [SerializeField]
+    private GameObject _allSummonerWindow = null;
 
     private bool _ismenuEndPos = true;
     private bool _ismenuStartPos = true;
     private int _menuStartPos = -100;
     private int _menuEndPos = 100;
     private int _menuAnimSpeed = 50;
+
+    public enum LiveGameWindowMode
+    {
+        Individual,
+        Public
+    }
 
     private void Awake()
     {
@@ -68,6 +78,23 @@ public class UIManager : MonoBehaviour
             }
             _menuWindow.transform.Translate(-_menuAnimSpeed, 0, 0);
             yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public void LiveGameChangeWindow(LiveGameWindowMode liveGameWindowMode)
+    {
+        switch (liveGameWindowMode)
+        {
+            case LiveGameWindowMode.Individual:
+                _liveGameWindow.SetActive(true);
+                _allSummonerWindow.SetActive(false);
+                break;
+            case LiveGameWindowMode.Public:
+                _liveGameWindow.SetActive(false);
+                _allSummonerWindow.SetActive(true);
+                break;
+            default:
+                break;
         }
     }
 }

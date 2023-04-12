@@ -313,6 +313,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc330e62a08fa8a41b4770b60ef1abaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2537557753029992879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1157972984449624441}
+  - component: {fileID: 3270702077815142146}
+  m_Layer: 0
+  m_Name: AllSummonerUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1157972984449624441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537557753029992879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4536560802426202718}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3270702077815142146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537557753029992879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c5b3a78d6229a43bef21939384dc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2664766916817230688
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _summonerDropdown: {fileID: 0}
   _loadingWindow: {fileID: 0}
-  _homeButton: {fileID: 0}
+  _viewChangeButton: {fileID: 0}
   _searchWindow: {fileID: 0}
 --- !u!1 &3113787660368869156
 GameObject:
@@ -462,6 +505,7 @@ MonoBehaviour:
   _subRuneBackGround: {fileID: 0}
   _championIcon: {fileID: 0}
   _ranlIcon: {fileID: 0}
+  _favoriteChampionIcon: {fileID: 0}
 --- !u!1 &3533999769838680263
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +578,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1108861977580341559}
+  - {fileID: 1157972984449624441}
   m_Father: {fileID: 2835001304396016606}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -553,6 +598,8 @@ MonoBehaviour:
   _menuButton: {fileID: 0}
   _menuWindow: {fileID: 0}
   _closeWindow: {fileID: 0}
+  _liveGameWindow: {fileID: 0}
+  _allSummonerWindow: {fileID: 0}
 --- !u!1 &5498688686908343581
 GameObject:
   m_ObjectHideFlags: 0

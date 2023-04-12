@@ -21,7 +21,7 @@ public class LiveGameUIManager : MonoBehaviour
     }
 
     [SerializeField]
-    private Button _homeButton = null;
+    private Button _viewChangeButton = null;
     [SerializeField]
     private Image _searchWindow = null;
     public Image SearchWindow
@@ -45,6 +45,7 @@ public class LiveGameUIManager : MonoBehaviour
     {
         // _homeButton.onClick.AddListener(() => LOM.Instance.LiveGameManager.ResetButton());
         //_homeButton.gameObject.SetActive(false);
+        _viewChangeButton.onClick.AddListener(() => LOM.Instance.UIManager.LiveGameChangeWindow(UIManager.LiveGameWindowMode.Public));
     }
 
     private void Update()
@@ -57,7 +58,7 @@ public class LiveGameUIManager : MonoBehaviour
         if (LOM.Instance.LiveGameManager.IsMatchRequest && !_isLoad)
         {
             _loadingWindow.gameObject.SetActive(true);
-            _homeButton.gameObject.SetActive(true);
+            _viewChangeButton.gameObject.SetActive(true);
             StartCoroutine(FadeIn(_loadingWindow));
             _isLoad = true;
         }
@@ -95,7 +96,7 @@ public class LiveGameUIManager : MonoBehaviour
         Color color = _loadingWindow.color;
         color.a = 100;
         _loadingWindow.gameObject.SetActive(true);
-        _homeButton.gameObject.SetActive(false);
+        _viewChangeButton.gameObject.SetActive(false);
         _loadingWindow.color = color;
     }
 
