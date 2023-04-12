@@ -3663,6 +3663,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3270702077815142146, guid: 6dcf623a819859d44ba2db5b5776ed91, type: 3}
+      propertyPath: _redTeam
+      value: 
+      objectReference: {fileID: 1815862738}
+    - target: {fileID: 3270702077815142146, guid: 6dcf623a819859d44ba2db5b5776ed91, type: 3}
+      propertyPath: _blueTeam
+      value: 
+      objectReference: {fileID: 1348327348}
+    - target: {fileID: 3270702077815142146, guid: 6dcf623a819859d44ba2db5b5776ed91, type: 3}
       propertyPath: _viewChangeButton
       value: 
       objectReference: {fileID: 2092167798}
