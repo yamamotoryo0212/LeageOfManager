@@ -356,6 +356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c5b3a78d6229a43bef21939384dc9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _viewChangeButton: {fileID: 0}
+  _redTeam: {fileID: 0}
+  _blueTeam: {fileID: 0}
 --- !u!1 &2664766916817230688
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _liveGameUIManager: {fileID: 4249398121415460739}
-  _menuButton: {fileID: 0}
+  _allSummonerUIManager: {fileID: 3270702077815142146}
   _menuWindow: {fileID: 0}
   _closeWindow: {fileID: 0}
   _liveGameWindow: {fileID: 0}

@@ -25,6 +25,14 @@ public class AllSummonerUIManager : MonoBehaviour
 
     private void Update()
     {
+
+
+
+        //_isSet = true;
+    }
+
+    public void SetWindow()
+    {
         if (!LOM.Instance.LiveGameManager.IsMatchIDRequest) return;
         if (!(LOM.Instance.LiveGameManager.LiveGameMenberDatas.Count == 10)) return;
         if (_isSet) return;
@@ -44,8 +52,25 @@ public class AllSummonerUIManager : MonoBehaviour
                 color = new Color(0.737f, 0.196f, 0.196f, 0.6f);
             }
 
-            Image summoner =  Instantiate(_summonerData, parent);
+            Image summoner = Instantiate(_summonerData, parent);
             summoner.color = color;
+            SummonerData summonerData = summoner.GetComponent<SummonerData>();
+
+
+            var key = item.SummonerName + "(" + LOM.Instance.RiotIDDataManager.ChampionID[(int)item.ChampionID].ToString() + ")";
+
+            summonerData.SummonerName.text = item.SummonerName;
+            summonerData.SummonerLevel.text = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerLevel(key);
+            summonerData.ChampionIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetChampionIcon(key);
+            summonerData.SummonerSpellIcon[0].sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerSpell(key)[0];
+            summonerData.SummonerSpellIcon[1].sprite = LOM.Instance.UIManager.LiveGameUIManager.SetSummonerSpell(key)[1];
+            summonerData.RankIcon.sprite = LOM.Instance.UIManager.LiveGameUIManager.SetRankIcon(key);
+            summonerData.RankText.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankText(key);
+            summonerData.WinRateText.text = LOM.Instance.UIManager.LiveGameUIManager.SetWinRate(key);
+            summonerData.RankWinRateText.text = LOM.Instance.UIManager.LiveGameUIManager.SetRankWinRate(key);
+            summonerData.KDARateText.text = LOM.Instance.UIManager.LiveGameUIManager.SetKDA(key);
+
+            //LOM.Instance.UIManager.LiveGameUIManager.
         }
         _isSet = true;
     }

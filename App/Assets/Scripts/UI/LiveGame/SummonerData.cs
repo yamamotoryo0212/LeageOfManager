@@ -32,7 +32,7 @@ public class SummonerData : MonoBehaviour
     }
     [SerializeField]
     private Image _rankIcon = null;
-    public Image image
+    public Image RankIcon
     {
         get { return _rankIcon; }
     }

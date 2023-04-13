@@ -12,6 +12,12 @@ public class UIManager : MonoBehaviour
     {
         get { return _liveGameUIManager; }
     }
+    [SerializeField]
+    private AllSummonerUIManager _allSummonerUIManager = null;
+    public AllSummonerUIManager AllSummonerUIManager
+    {
+        get { return _allSummonerUIManager; }
+    }
 
     [SerializeField]
     private Button _menuButton = null;
@@ -95,6 +101,7 @@ public class UIManager : MonoBehaviour
             case LiveGameWindowMode.Public:
                 _liveGameWindow.SetActive(false);
                 _allSummonerWindow.SetActive(true);
+                LOM.Instance.UIManager.AllSummonerUIManager.SetWindow();
                 break;
             default:
                 break;
